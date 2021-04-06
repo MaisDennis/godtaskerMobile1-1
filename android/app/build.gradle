@@ -137,7 +137,7 @@ android {
         applicationId "com.gerentedashmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 83
+        versionCode 86
         versionName "2"
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
         multiDexEnabled true
