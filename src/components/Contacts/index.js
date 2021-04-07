@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TouchableOpacity, Text } from 'react-native'
 // -----------------------------------------------------------------------------
 import {
-  Container, Body,
-  TabView, UserInfoView, ButtonsView,
-  Image, ContactText,
-  OthersView, ContactsIcon, BottomTabView, ButtonsText
-
+  Body, ButtonsView, BottomTabView, ButtonsText,
+  Container, ContactText, ContactsIcon,
+  Image, ImageBackgroundView,
+  OthersView,
+  TabView, UserInfoView,
 } from './styles'
 import { updateContacts } from '~/store/modules/contact/actions';
 import api from '~/services/api';
@@ -77,10 +77,14 @@ export default function Contacts({ navigation, data }) {
           {/* <ImageView> */}
           { workerData === undefined || workerData.avatar === null
                     ? (
-                      <Image/>
+                      <ImageBackgroundView>
+                        <Image/>
+                      </ImageBackgroundView>
                     )
                     : (
-                      <Image source={{ uri: workerData.avatar.url }}/>
+                      <ImageBackgroundView>
+                        <Image source={{ uri: workerData.avatar.url }}/>
+                      </ImageBackgroundView>
                     )
                   }
           {/* </ImageView> */}

@@ -72,7 +72,7 @@ export default function SignIn({ navigation }) {
                 returnKeyType="next"
                 value={phonenumber}
                 onChangeText={setPhonenumber}
-                placeholderTextColor={'#ccc'}
+                placeholderTextColor={'#999'}
               />
               <FormInputWorkerPassword
                 // icon="unlock"

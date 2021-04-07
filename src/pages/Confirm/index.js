@@ -7,7 +7,8 @@ import Icon from 'react-native-vector-icons/Feather';
 // -----------------------------------------------------------------------------
 import {
   Container, TitleView, TaskName,
-  CameraButton, CameraView, CameraReverseButton, CameraRollButton,
+  CameraButton, CameraView, CameraButtonBackground,
+  CameraReverseButton, CameraRollButton,
   FlashButton, FooterView,
   // StyledScrollView,
   StyledRNCamera,
@@ -188,13 +189,15 @@ export default function Confirm({ route }) {
             callback={this.myImages.bind(this)}
           /> */}
           <CameraRollButton onPress={() => chooseFromLibrary()}>
-            <Icon name='image' size={24} color='#fff'/>
+            <Icon name='image' size={24} color='#222'/>
           </CameraRollButton>
-          <CameraButton onPress={() => takePicture()}>
-            <Icon name='camera' size={24} color='#fff'/>
-          </CameraButton>
+          <CameraButtonBackground onPress={() => takePicture()}>
+            <CameraButton>
+              <Icon name='camera' size={24} color='#fff'/>
+            </CameraButton>
+          </CameraButtonBackground>
           <CameraReverseButton onPress={() => setToggleCameraReverse(!toggleCameraReverse)}>
-            <Icon name='users' size={24} color='#fff'/>
+            <Icon name='users' size={24} color='#222'/>
           </CameraReverseButton>
         </FooterView>
       </Container>

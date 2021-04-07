@@ -112,8 +112,6 @@ background-color: #f5f5f5;
 
 `;
 
-export const LastMessageView = styled.View``;
-
 export const LineView = styled.View`
 display: flex;
 flex-direction: row;
@@ -156,27 +154,25 @@ export const MessageText = styled.Text`
   /* background-color: #666; */
 `;
 export const MessageTime = styled.Text`
-font-size: 12px;
+font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
 max-width: 80px;
 margin: 4px;
 `;
-
 export const MessageIcon = styled(Icon)`
 font-size: 16px;
 margin-left: 8px;
 /* margin-right: 8px; */
 color: #999;
 `;
-
 export const MessageContainer = styled.View`
   display: flex;
   flex-direction: column;
-  align-items: ${ props => props.sender
+  align-items: ${ props => props.userIsWorker === true
     ? (
-      (props.sender === 'user') ? 'flex-end' : 'flex-start'
+      (props.sender === 'worker') ? 'flex-end' : 'flex-start'
     )
     : (
-      (props.sender === 'user') ? 'flex-start' : 'flex-end'
+      (props.sender === 'worker') ? 'flex-start' : 'flex-end'
     )
   };
   width: 100%;
@@ -192,7 +188,6 @@ export const MessageWrapper = styled.View`
   width: auto;
   /* background-color: #4ee; */
 `;
-
 export const MessageListView = styled.View`
   display: flex;
   flex-direction: row;
@@ -200,7 +195,6 @@ export const MessageListView = styled.View`
   margin-top: 8px;
   /* background-color: #44cc; */
 `;
-
 export const MessageListButton = styled(TouchableOpacity)`
   display: flex;
   flex-direction: row;
@@ -210,7 +204,6 @@ export const MessageListButton = styled(TouchableOpacity)`
   margin: 4px;
   /* background-color: #f44; */
 `;
-
 export const MessageListItemView = styled.View`
   display: flex;
   flex-direction: row;
@@ -234,6 +227,7 @@ height: auto;
 width: 100%;
 background-color: #4433ee;
 `;
+
 export const ReplyContainer = styled.View`
   display: flex;
   flex-direction: column;
@@ -293,18 +287,17 @@ export const SenderAboutText = styled.Text`
   max-width: 70%;
   margin: 0;
   /* background-color: #334466; */
-
 `;
 
 export const SendInput = styled.TextInput`
-display: flex;
-height: 32px;
-width: 80%;
-margin: 0;
-padding: 0 12px;
-border-radius: 16px;
-border: 1px solid #ccc;
-background-color: #fff;
+  display: flex;
+  height: 32px;
+  width: 80%;
+  margin: 0;
+  padding: 0 12px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  background-color: #fff;
 `;
 
 export const SendButton = styled.View`
@@ -320,8 +313,8 @@ export const SendButton = styled.View`
   background-color: #4433ee;
 `;
 export const SendIcon = styled(Icon)`
-font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
-color: #fff;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
+  color: #fff;
 `;
 
 export const SendButtonView = styled(TouchableOpacity)`
@@ -362,15 +355,15 @@ export const TemporaryMessageView = styled.View`
   /* background-color: #f00; */
 `;
 export const TemporaryMessageText = styled.Text`
-color: #999;
-text-align: left;
-margin: 0 auto;
+  color: #999;
+  text-align: left;
+  margin: 0 auto;
 `;
 
 export const TemporaryMessageIcon = styled(Icon)`
-font-size: 21px;
-color: #4433ee;
-/* background-color: #fff; */
+  font-size: 21px;
+  color: #4433ee;
+  /* background-color: #fff; */
 `;
 export const TemporaryMessageIconView = styled.View`
   display: flex;
@@ -379,5 +372,3 @@ export const TemporaryMessageIconView = styled.View`
   width: 10%;
   /* background-color: #999; */
 `;
-
-

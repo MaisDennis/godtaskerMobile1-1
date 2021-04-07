@@ -2,16 +2,6 @@ import styled from 'styled-components/native';
 import { TouchableOpacity } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 
-export const StyledRNCamera = styled(RNCamera)`
-  /* top: 40px; */
-  height: 80%;
-  width: 100%;
-`;
-
-export const StyledScrollView = styled.ScrollView`
-
-`;
-
 export const Container = styled.SafeAreaView`
   display: flex;
   flex-direction: column;
@@ -21,73 +11,34 @@ export const Container = styled.SafeAreaView`
   background: #f5f5f5;
 `;
 
-export const TitleView = styled.View`
+export const CameraButton = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 10%;
-  width: auto;
-  /* background: #ff5f; */
+  justify-content: center;
+  height: 44px;
+  width: 44px;
+  border-radius: 44px;
+  border: 1px solid #fff;
+  /* padding: 12px; */
+  /* margin: auto; */
+  background-color: #4433ee;
 `;
 
-// export const CameraView = styled.View`
-//   position: relative;
-//   height: auto;
-//   width: 100%;
-//   margin: 0;
-//   display: flex;
-//   align-items: center;
-//   /* background: #F5F5; */
-// `;
-export const FooterView = styled.View`
+export const CameraButtonBackground = styled(TouchableOpacity)`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 10%;
-  width: 100%;
-  /* opacity: .9; */
-
-  background: #222;
+  justify-content: center;
+  height: 48px;
+  width: 48px;
+  border-radius: 48px;
+  border: 4px solid #4433ee;
+  padding: 12px;
+  margin: auto;
+  background-color: #4433ee;
 `;
 
-
-export const TaskName = styled.Text`
-  font-weight: bold;
-  font-size: 16px;
-  /* background: #ff5f; */
-  margin: 0 4px;
-`;
-
-export const CameraButton = styled(TouchableOpacity)`
-display: flex;
-flex-direction: row;
-align-items: center;
-height: auto;
-width: auto;
-border-radius: 40px;
-border: 4px solid #fff;
-padding: 12px;
-margin: auto;
-background-color: #58595B;
-/* background-color: #58595B; */
-`;
-
-export const FlashButton = styled(TouchableOpacity)`
-display: flex;
-flex-direction: row;
-align-items: center;
-position: absolute;
-top: 12%;
-left: 5%;
-height: auto;
-width: auto;
-border-radius: 40px;
-/* border: 4px solid #fff; */
-/* padding: 12px; */
-margin: 0 auto;
-/* background-color: #58595B; */
-/* background-color: #58595B; */
-`;
 export const CameraReverseButton = styled(TouchableOpacity)`
 display: flex;
 flex-direction: row;
@@ -99,7 +50,7 @@ border-radius: 40px;
 /* padding: 12px; */
 margin: 0 auto;
 /* background-color: #58595B; */
-/* background-color: #58595B; */
+
 `;
 
 export const CameraRollButton = styled(TouchableOpacity)`
@@ -112,5 +63,65 @@ border-radius: 40px;
 /* border: 4px solid #fff; */
 margin: 0 auto;
 /* background-color: #58595B; */
-/* background-color: #58595B; */
+
 `;
+
+export const FlashButton = styled(TouchableOpacity)`
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+position: absolute;
+top: 10%;
+left: 4%;
+height: 40px;
+width: 40px;
+opacity: 0.8;
+border-radius: 40px;
+/* border: 4px solid #fff; */
+/* padding: 12px; */
+margin: 0 auto;
+background-color: #666;
+
+`;
+export const FooterView = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 10%;
+  width: 100%;
+  /* opacity: .9; */
+
+  background: #f5f5f5;
+`;
+
+export const StyledRNCamera = styled(RNCamera)`
+  /* top: 40px; */
+  height: 82%;
+  width: 100%;
+`;
+
+export const StyledScrollView = styled.ScrollView`
+
+`;
+
+export const TitleView = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 8%;
+  width: 100%;
+  /* padding: 24px 0; */
+  background-color: #E7EEFF;
+`;
+
+export const TaskName = styled.Text`
+  font-weight: bold;
+  font-size: 14px;
+  color: #334466;
+  /* background: #ff5f; */
+  margin: 0 4px;
+`;
+
+

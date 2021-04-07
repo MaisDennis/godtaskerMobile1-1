@@ -46,6 +46,7 @@ const formattedDateTime = fdate =>
   const updated_tasks = useSelector( state => state.task.tasks)
   const workerData = data.worker
   const dueDate = parseISO(data.due_date);
+  const endDate = parseISO(data.end_date);
   const subTasks = data.sub_task_list
 
   const [toggleTask, setToggleTask] = useState();
@@ -101,17 +102,22 @@ const formattedDateTime = fdate =>
     return flag
   }
 
-  async function updateBell(editedSubTaskList) {
-    try {
-      // await api.put(`tasks/${data.id}`, {
-      //   sub_task_list: editedSubTaskList
-      // })
-    }
-    catch(error) {
-      console.log('error in put tasks/:id')
-    }
-
+  const endPastDueDate = () => {
+    let flag = false;
+    endDate > dueDate ? flag = true : flag = false
+    return flag
   }
+
+  // async function updateBell(editedSubTaskList) {
+  //   try {
+  //     await api.put(`tasks/${data.id}`, {
+  //       sub_task_list: editedSubTaskList
+  //     })
+  //   }
+  //   catch(error) {
+  //     console.log('error in put tasks/:id')
+  //   }
+  // }
 
   function handleToggleTask() {
     setToggleTask(!toggleTask)
@@ -214,10 +220,7 @@ const formattedDateTime = fdate =>
                   )
                   : (
                     <UserImageBackground>
-                      { Platform.OS === 'ios'
-                        ? (<UserImage source={{ sourceURL: workerData.avatar.url }}/>)
-                        : (<UserImage source={{ uri: workerData.avatar.url }}/>)
-                      }
+                      <UserImage source={{ uri: workerData.avatar.url }}/>
                     </UserImageBackground>
                   )
                 }
@@ -250,8 +253,8 @@ const formattedDateTime = fdate =>
                     { data.end_date
                       ? (
                         <>
-                          <LabelEnded pastDueDate={pastDueDate()}>Finalizou!</LabelEnded>
-                          <DueTimeView pastDueDate={pastDueDate()}>
+                          <LabelEnded pastDueDate={pastDueDate()}>Enc.</LabelEnded>
+                          <DueTimeView pastDueDate={endPastDueDate()}>
                             <DueTime>{formattedDate(data.end_date)}</DueTime>
                           </DueTimeView>
                         </>
@@ -298,7 +301,7 @@ const formattedDateTime = fdate =>
           </MainHeaderView>
 
           <AsideView>
-            <AlignView>
+            {/* <AlignView> */}
               { (hasUnread(data.sub_task_list) === 0)
                 ? (
                   null
@@ -319,7 +322,7 @@ const formattedDateTime = fdate =>
                   </BellIcon>
                 )
               }
-            </AlignView>
+            {/* </AlignView> */}
           </AsideView>
         </HeaderView>
       </TouchableOpacity>
@@ -359,11 +362,32 @@ const formattedDateTime = fdate =>
             <DetailsView>
               <TagView>
                 <Label>Prazo com horário:</Label>
-                <DueTimeView pastDueDate={pastDueDate()}>
-                  <DueTime>{formattedDateTime(data.due_date)}</DueTime>
-                </DueTimeView>
+                { data.end_date !== null
+                  ? (
+                    <DueTimeView style={{backgroundColor:'#f5f5f5'}}>
+                      <DueTime>{formattedDateTime(data.due_date)}</DueTime>
+                    </DueTimeView>
+                  )
+                  : (
+                    <DueTimeView pastDueDate={pastDueDate()}>
+                      <DueTime>{formattedDateTime(data.due_date)}</DueTime>
+                    </DueTimeView>
+                  )
+                }
               </TagView>
             </DetailsView>
+            { data.end_date !== null &&
+              (
+                <DetailsView>
+                  <TagView>
+                    <Label>Enc. com horário:</Label>
+                    <DueTimeView pastDueDate={endPastDueDate()}>
+                      <DueTime>{formattedDateTime(data.end_date)}</DueTime>
+                    </DueTimeView>
+                  </TagView>
+                </DetailsView>
+              )
+            }
             <DetailsView>
               <TagView>
                 <Label>Complexidade:</Label>
@@ -457,10 +481,7 @@ const formattedDateTime = fdate =>
             <ImageWrapper>
               <Label>Foto de confirmação:</Label>
               <ImageView>
-                { Platform.OS === 'ios'
-                  ? (<Image source={{ sourceURL: data.signature.url }}/>)
-                  : (<Image source={{ uri: data.signature.url }}/>)
-                }
+                (<Image source={{ uri: data.signature.url }}/>
               </ImageView>
             </ImageWrapper>
           }

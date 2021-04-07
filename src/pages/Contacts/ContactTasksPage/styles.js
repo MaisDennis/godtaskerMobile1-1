@@ -19,11 +19,13 @@ export const List = styled.FlatList.attrs({
 `;
 
 export const HeaderTabView = styled.View`
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-width: 100%;
-height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  padding: 4px 0;
+/* background-color: #f5f; */
 `;
 export const UpperTabView = styled.View`
 height: auto;

@@ -52,14 +52,14 @@ export const Container = styled.SafeAreaView`
 export const DateOptionsView = styled.View`
   display: flex;
   width: 80%;
-  border-radius: 12px;
+  border-radius: 4px;
   padding: 0 8px;
-  /* border: 1px solid #ccc; */
+  /* border: 1px solid #999; */
   background-color: #ddd;
 `;
 export const DateOptions = styled(DatePicker)`
   width: 100%;
-  height: 172px;
+  height: 120px;
   border: 1px solid #ccc;
   margin: 0;
   /* font-size: 20px; */
@@ -83,10 +83,12 @@ export const FormScrollView = styled.ScrollView`
 
 export const Input = styled.TextInput`
   display: flex;
+  font-size: 14px;
+  height: 48px;
   width: 100%;
   padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #999;
   background-color: #fff;
 `;
 export const ItemWrapperView = styled.View`
@@ -102,6 +104,7 @@ export const ItemWrapperView = styled.View`
 
 export const LabelText = styled.Text`
   max-width: 80%;
+  /* font-size: ${Platform.OS === 'ios' ? '13px' : '12px'}; */
   font-size: 14px;
   font-weight: normal;
   color: #666;
@@ -129,9 +132,10 @@ margin-top: 12px;
 `;
 
 export const Options = styled(Picker)`
-  height: 56px;
+  height: 48px;
   width: 80%;
-  border-radius: 12px;
+  font-size: 14px;
+  border-radius: 4px;
   background-color: #ddd;
 `;
 
@@ -141,8 +145,7 @@ export const SubTaskView = styled.View`
   align-items: center;
   height: auto;
   width: 100%;
-  margin: 12px 0;
-  border-radius: 12px;
+  border-radius: 4px;
   /* background-color: #f5f; */
 `;
 export const SubTaskItemView = styled.View`
@@ -171,10 +174,10 @@ export const SubTaskLabelText = styled.Text`
 export const SubTaskInput = styled.TextInput`
   display: flex;
   height: auto;
-  width: 95%;
+  width: 100%;
   padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #999;
   background-color: #fff;
 `;
 export const SubTaskText = styled.Text`
@@ -219,7 +222,7 @@ export const SubmitButton = styled(TouchableOpacity)`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 56px;
+  height: 48px;
   width: 100%;
   border-radius: 4px;
   margin: 16px 0 24px 0;
@@ -266,7 +269,7 @@ export const WeigeTagView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* justify-content: space-between; */
+
   height: auto;
   width: 75%;
   /* background-color: #111; */

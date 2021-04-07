@@ -6,7 +6,7 @@ export const Container = styled.SafeAreaView`
 
 export const Title3 = styled.Text`
   font-weight: bold;
-  font-size: 14px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   color: #888;
   margin: auto;
 `;

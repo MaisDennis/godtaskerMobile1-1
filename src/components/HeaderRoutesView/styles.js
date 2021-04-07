@@ -4,9 +4,11 @@ export const AlignView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  align-self: center;
+  width: 90%;
   height: 100%;
-  /* background: #F5F5F5; */
+  background: #F5F5F5;
+  /* background: #ee3; */
 `;
 
 export const HeaderContainer = styled.View`

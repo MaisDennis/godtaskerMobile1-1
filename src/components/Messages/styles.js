@@ -48,7 +48,8 @@ export const UserImageBackgroundView = styled.View`
   height: 52px;
   width: 52px;
   border-radius: 52px;
-  border: 1px solid #009966;
+  border-width: 1px;
+  border-color: #009966;
   background-color: #fff;
 `;
 export const WorkerImageBackgroundView = styled.View`
@@ -58,7 +59,8 @@ export const WorkerImageBackgroundView = styled.View`
   height: 52px;
   width: 52px;
   border-radius: 52px;
-  border: 1px solid #334466;
+  border-width: 1px;
+  border-color: #334466;
   background-color: #fff;
 `;
 
@@ -111,7 +113,6 @@ export const SenderText = styled.Text`
 export const LastMessageView = styled.View`
 min-height: 48px;
 padding: 4px;
-/* border: 1px solid #ccc; */
 border-radius: 4px;
 background-color: #f5f5f5;
 `;
@@ -142,7 +143,8 @@ export const UnreadMessageCountView = styled.View`
   width: 24px;
   margin: 0;
   border-radius: 24px;
-  border: 1px solid #ccc;
+  border-width: 1px;
+  border-color: #ccc;
   /* background-color: #fff; */
 `;
 export const MessageIcon = styled(Icon)`

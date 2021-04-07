@@ -208,7 +208,7 @@ export default function MessagesConversationPage({ navigation, route }) {
   const renderItem = ({ item, index }) => (
     <AlignView key={item.id} sender={item.sender} userIsWorker={userIsWorker}>
       <LineView>
-        <MessageContainer sender={item.sender}>
+        <MessageContainer sender={item.sender} userIsWorker={userIsWorker}>
           { userIsWorker
             ? (
               <MessageWrapper>

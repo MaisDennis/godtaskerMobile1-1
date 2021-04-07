@@ -31,10 +31,8 @@ export default function ContactsTasksPage({ navigation, route }) {
   return (
     <Container>
       <HeaderTabView>
-        <UpperTabView><UpperTabText>em aberto</UpperTabText></UpperTabView>
-        <UpperTabView><UpperTabText>finalizadas</UpperTabText></UpperTabView>
-        <UpperTabView><UpperTabText>canceladas</UpperTabText></UpperTabView>
-        <UpperTabView><UpperTabText>todas</UpperTabText></UpperTabView>
+        <UpperTabView><UpperTabText></UpperTabText></UpperTabView>
+
       </HeaderTabView>
       { tasks == ''
           ? <Title3>Não há tarefas em aberto.</Title3>

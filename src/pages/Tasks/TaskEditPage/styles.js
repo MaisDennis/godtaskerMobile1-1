@@ -25,10 +25,11 @@ export const Container = styled.SafeAreaView`
 
 export const DateOptionsView = styled.View`
   display: flex;
-  width: 100%;
-  border-radius: 12px;
+  width: 80%;
+  border-radius: 4px;
+  padding: 0 8px;
   /* border: 1px solid #666; */
-  background-color: #fff;
+  background-color: #ddd;
 `;
 export const DateOptions = styled(DatePicker)`
   width: 100%;
@@ -58,14 +59,17 @@ export const ItemWrapperView = styled.View`
 `;
 export const Input = styled.TextInput`
   display: flex;
+  height: 48px;
   width: 100%;
   padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #999;
   background-color: #fff;
 `;
 
 export const LabelText = styled.Text`
+  max-width: 80%;
+  /* font-size: ${Platform.OS === 'ios' ? '13px' : '12px'}; */
   font-size: 14px;
   font-weight: normal;
   color: #666;
@@ -93,9 +97,11 @@ export const ModalText = styled.Text`
 `;
 
 export const Options = styled(Picker)`
-  width: 100%;
-  border-radius: 12px;
-  background-color: #fff;
+  height: 48px;
+  width: 80%;
+  font-size: 14px;
+  border-radius: 4px;
+  background-color: #ddd;
 `;
 export const SubmitButton = styled(TouchableOpacity)`
   display: flex;
@@ -144,8 +150,7 @@ export const SubTaskView = styled.View`
   align-items: center;
   height: auto;
   width: 100%;
-  margin: 12px 0;
-  border-radius: 12px;
+  border-radius: 4px;
   /* background-color: #f5f; */
 `;
 export const SubTaskLabelText = styled.Text`
@@ -186,10 +191,10 @@ export const SubTaskIcon = styled(Icon)`
 export const SubTaskInput = styled.TextInput`
   display: flex;
   height: auto;
-  width: 95%;
+  width: 100%;
   padding: 12px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+  border-radius: 4px;
+  border: 1px solid #999;
   background-color: #fff;
 `;
 export const SubTaskItemView = styled.View`

@@ -6,11 +6,8 @@ export const Body = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-items: center; */
   height: 66px;
   width: 100%;
-  /* border: 1px solid #ccc; */
-  /* padding: 8px; */
   /* background: #F5F5; */
 `;
 
@@ -62,10 +59,25 @@ export const Container = styled.View`
 `;
 
 export const Image = styled.Image`
+  height: 32px;
+  width: 32px;
+  border-radius: 32px;
+  border-width: 1px;
+  border-color: #fff;
+  background-color: #f5f5f5;
+
+`;
+export const ImageBackgroundView = styled.View`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 36px;
   width: 36px;
   border-radius: 36px;
-  background-color: #f5f5f5;
+  border-width: 1px;
+  border-color: #334466;
+  background-color: #fff;
 `;
 
 

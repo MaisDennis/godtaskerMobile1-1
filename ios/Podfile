@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '12.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 def add_flipper_pods!(versions = {})
@@ -85,13 +85,15 @@ target 'gerenteDashMobile' do
 
 
   # Add the pods for the Firebase products you want to use in your app
-# For example, to use Firebase Authentication and Cloud Firestore
+  # For example, to use Firebase Authentication and Cloud Firestore
   pod 'Firebase/Auth'
-  pod 'Firebase/Firestore'
+  pod 'Firebase/Analytics'
+  # pod 'Firebase/Database'
+  # pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
   pod 'Firebase/Core'
-  pod 'Firebase/Database'
-  pod 'FirebaseCoreDiagnostics', '1.2.1'
+
+  #pod 'FirebaseCoreDiagnostics', '1.2.1'
 
   target 'gerenteDashMobileTests' do
     inherit! :complete

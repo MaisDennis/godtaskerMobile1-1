@@ -3,8 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TouchableOpacity } from 'react-native'
 // -----------------------------------------------------------------------------
 import {
-  Container, FormScrollView, ItemWrapperView, LabelText,
-  Input, SubmitView, AlignView, SubmitIcon, PhoneMask
+  AlignView,
+  Container,
+  FormScrollView,
+  Input, ItemWrapperView,
+  LabelText,
+  PhoneMask,
+  SubmitButton, SubmitButtonText,
 } from './styles'
 import { updateContacts } from '~/store/modules/contact/actions';
 import api from '~/services/api';
@@ -99,15 +104,11 @@ export default function EditContactPage({ navigation, route }) {
             editable={false}
           />
         </ItemWrapperView>
-        <TouchableOpacity onPress={handleSubmit}>
-          <ItemWrapperView>
-            <SubmitView>
-              <AlignView>
-                <SubmitIcon name="send" size={20} color="#fff" />
-              </AlignView>
-            </SubmitView>
-          </ItemWrapperView>
-        </TouchableOpacity>
+        <ItemWrapperView>
+          <SubmitButton onPress={handleSubmit}>
+            <SubmitButtonText>Enviar</SubmitButtonText>
+          </SubmitButton>
+        </ItemWrapperView>
       </FormScrollView>
     </Container>
   )

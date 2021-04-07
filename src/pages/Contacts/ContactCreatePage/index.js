@@ -9,7 +9,7 @@ import {
   Input, ItemWrapperView,
   LabelText,
   PhoneMask,
-  SubmitView, SubmitIcon,
+  SubmitButton, SubmitButtonText,
 } from './styles'
 import { updateContacts } from '~/store/modules/contact/actions';
 import { updateTasks } from '~/store/modules/task/actions';
@@ -102,7 +102,7 @@ export default function ContactCreatePage({ navigation }) {
                 dddMask: '(99) ',
               }
             }
-            placeholder="(10)  91010-1010"
+            placeholder="(11) 91234-1234"
             returnKeyType="next"
             value={phonenumber}
             onChangeText={setPhonenumber}
@@ -110,15 +110,11 @@ export default function ContactCreatePage({ navigation }) {
             placeholderTextColor='#ccc'
           />
         </ItemWrapperView>
-        <TouchableOpacity onPress={handleSubmit}>
-          <ItemWrapperView>
-            <SubmitView>
-              <AlignView>
-                <SubmitIcon name="send" size={20} color="#fff" />
-              </AlignView>
-            </SubmitView>
-          </ItemWrapperView>
-        </TouchableOpacity>
+        <ItemWrapperView>
+          <SubmitButton onPress={handleSubmit}>
+            <SubmitButtonText>Enviar</SubmitButtonText>
+          </SubmitButton>
+        </ItemWrapperView>
       </FormScrollView>
     </Container>
   )

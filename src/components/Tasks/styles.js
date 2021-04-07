@@ -43,8 +43,9 @@ export const AlignDetailsView = styled.View`
 `;
 export const AsideView = styled.View`
 display: flex;
-flex-direction: row;
-align-items: center;
+flex-direction: column;
+align-items: flex-end;
+justify-content: center;
 width: 10%;
   /* background-color: #336622; */
 `;
@@ -56,7 +57,7 @@ export const AcceptButton = styled.View`
 `;
 
 export const BellIcon = styled(Icon)`
-font-size: 24px;
+font-size: 18px;
 margin: 4px 0;
 color: #999;
 `;
@@ -134,7 +135,8 @@ export const DescriptionBorderView = styled.View`
   min-height: 36px;
   width: 100%;
   padding: 4px;
-  border: 1px solid #ccc;
+  border-width: 1px;
+  border-color: #ccc;
   border-radius: 4px;
   background-color: #F5F5F5;
   /* background-color: #f00; */
@@ -168,7 +170,7 @@ export const DueTimeView = styled.View`
 `;
 export const DueTime = styled.Text`
   font-weight: bold;
-  font-size: 12px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
 `;
 
 export const FinishedButton = styled(Button)`
@@ -186,21 +188,23 @@ export const HeaderView = styled.View`
   /* background-color: #f00; */
 `;
 export const HrLine = styled.View`
-width: 100%;
-border: 0.5px #dddcda;
-margin: 4px auto;
+  width: 100%;
+  border-width: 0.5px;
+  border-color: #ddd;
+  margin: 4px auto;
 `;
 export const HrTitleLine = styled.View`
-width: 100%;
-border: .5px #ccc;
-box-shadow: 2px 2px 2px #ccc;
-margin: 0 auto;
+  width: 100%;
+  border-width: 0.5px;
+  border-color: #ccc;
+  box-shadow: 2px 2px 2px #ccc;
+  margin: 0 auto;
 `;
 
 export const ImageWrapper = styled.View`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  align-self: center;
   width: 95%;
   margin-top: 4px;
   margin-bottom: 8px;
@@ -215,9 +219,11 @@ export const ImageView = styled.View`
   min-height: 36px;
   width: 100%;
   padding: 4px;
-  border: 1px solid #ccc;
+  border-width: 1px;
+  border-color: #ccc;
   border-radius: 4px;
-  /* background-color: #F5F5F5; */
+  background-color: #f5f5f5;
+  /* background-color: #F5F5; */
 `;
 
 export const Image = styled.Image`
@@ -235,7 +241,7 @@ export const InnerStatusView = styled(LinearGradient)`
 
 export const Label = styled.Text`
   font-weight: normal;
-  font-size: 12px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   margin: 4px;
   margin-right: 4px;
   color: #888;
@@ -243,7 +249,7 @@ export const Label = styled.Text`
 
 export const LabelInitiated = styled.Text`
   font-weight: normal;
-  font-size: 12px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   margin-right: 4px;
   max-width: 60px;
   color: #009966;
@@ -251,7 +257,7 @@ export const LabelInitiated = styled.Text`
 
 export const LabelEnded = styled.Text`
   font-weight: normal;
-  font-size: 12px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   margin-right: 4px;
   max-width: 60px;
   color: ${props => props.pastDueDate === true ? '#f64C75' : '#009966'};
@@ -314,7 +320,8 @@ export const RejectTaskInput = styled.TextInput`
   padding: 12px;
   margin: 12px auto;
   border-radius: 12px;
-  border: 1px solid #ccc;
+  border-width: 1px;
+  border-color: #ccc;
   background-color: #fff;
 `;
 
@@ -331,7 +338,7 @@ background: ${props => props.initiated === null ? '#F5F5F5' : '#009966'};
 `;
 export const StartTime = styled.Text`
   font-weight: bold;
-  font-size: ${Platform.OS === 'ios' ? '15px' : '12px'};
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   /* background-color: #4433ee; */
 `;
 
@@ -404,7 +411,8 @@ export const UserImage = styled.Image`
   height: 36px;
   width: 36px;
   border-radius: 36px;
-  border: 1px solid #fff;
+  border-width: 1px;
+  border-color: #fff;
 
   background-color: #f5f5f5;
 `;
@@ -416,7 +424,8 @@ export const UserImageBackground = styled.View`
   height: 40px;
   width: 40px;
   border-radius: 40px;
-  border: 1px solid #334466;
+  border-width: 1px;
+  border-color: #334466;
   margin: 0 8px 0 4px;
   /* background-color: #666; */
 `;

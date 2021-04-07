@@ -100,10 +100,10 @@ export default function ContactsPage({ navigation }) {
         : (
           <List
             data={contacts}
-            keyExtractor={item => String(item.worker_id)}
+            keyExtractor={item => String(item.phonenumber)}
             renderItem={({ item }) => (
               <Contacts
-                key={item.worker_id}
+                key={item.phonenumber}
                 data={item}
                 navigation={navigation}
               />

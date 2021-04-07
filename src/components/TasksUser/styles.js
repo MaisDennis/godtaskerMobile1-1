@@ -43,14 +43,15 @@ export const AlignDetailsView = styled.View`
 
 export const AsideView = styled.View`
 display: flex;
-flex-direction: row;
-align-items: center;
+flex-direction: column;
+align-items: flex-end;
+justify-content: center;
 width: 10%;
   /* background-color: #336622; */
 `;
 
 export const BellIcon = styled(Icon)`
-font-size: 21px;
+font-size: 18px;
 margin: 8px 0;
 color: #999;
 `;
@@ -132,7 +133,8 @@ export const DescriptionBorderView = styled.View`
   min-height: 36px;
   width: 100%;
   padding: 4px;
-  border: 1px solid #ccc;
+  border-width: 1px;
+  border-color: #ccc;
   border-radius: 4px;
   background-color: #F5F5F5;
   /* background-color: #f00; */
@@ -152,7 +154,7 @@ export const DueTimeView = styled.View`
 `;
 export const DueTime = styled.Text`
   font-weight: bold;
-  font-size: ${Platform.OS === 'ios' ? '15px' : '12px'};
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
 `;
 
 export const FinishedButton = styled(Button)`
@@ -170,12 +172,14 @@ export const HeaderView = styled.View`
 `;
 export const HrLine = styled.View`
 width: 100%;
-border: 0.5px #dddcda;
+border-width: 0.5px;
+border-color: #ddd;
 margin: 4px auto;
 `;
 export const HrTitleLine = styled.View`
 width: 100%;
-border: 1px #ccc;
+border-width: 0.5px;
+border-color: #ddd;
 box-shadow: 2px 2px 2px #ccc;
 margin: 0 auto;
 `;
@@ -183,7 +187,7 @@ margin: 0 auto;
 export const ImageWrapper = styled.View`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
+  align-self: center;
   width: 95%;
   margin-top: 4px;
   margin-bottom: 8px;
@@ -198,7 +202,6 @@ export const ImageView = styled.View`
   min-height: 36px;
   width: 100%;
   padding: 4px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #F5F5F5;
 `;
@@ -275,7 +278,7 @@ background: ${props => props.initiated === null ? '#F5F5F5' : '#009966'};
 `;
 export const StartTime = styled.Text`
   font-weight: bold;
-  font-size: ${Platform.OS === 'ios' ? '15px' : '12px'};
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
 `;
 
 export const TitleIcon = styled(Icon)`
@@ -358,7 +361,8 @@ export const UserImage = styled.Image`
   height: 36px;
   width: 36px;
   border-radius: 36px;
-  border: 1px solid #fff;
+  border-width: 1px;
+  border-color: #fff;
 
   background-color: #f5f5f5;
 `;
@@ -370,7 +374,8 @@ export const UserImageBackground = styled.View`
   height: 40px;
   width: 40px;
   border-radius: 40px;
-  border: 1px solid #009966;
+  border-width: 1px;
+  border-color: #009966;
   margin: 0 8px 0 4px;
   /* background-color: #666; */
 `;

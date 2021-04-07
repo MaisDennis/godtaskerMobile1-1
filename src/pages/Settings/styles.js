@@ -41,10 +41,11 @@ export const NextIcon = styled(Icon)`
 `;
 
 export const SubHrView = styled.View`
-height: 0;
-width: 100%;
-margin-left: 20%;
-border: .5px solid #ccc;
+  height: 0;
+  width: 100%;
+  margin-left: 20%;
+  border-width: 0.5px;
+  border-color: #ccc;
 `;
 
 export const SettingsImageView = styled.View`
@@ -72,7 +73,7 @@ flex-direction: row;
 align-items: center;
 justify-content: space-between;
 height: 48px;
-/* border: 1px solid #ccc; */
+
 background-color: #fff;
 `;
 export const SettignsLeftView = styled.View`
@@ -126,7 +127,8 @@ export const UserImageBackgroundView = styled.View`
   height: 52px;
   width: 52px;
   border-radius: 52px;
-  border: 1px solid #999;
+  border-width: 1px;
+  border-color: #999;
   background-color: #fff;
 `;
 export const UserInfoView = styled.View`

@@ -15,7 +15,7 @@ export const AllIcon = styled(Icon)`
   /* color: #44ccee */
 `;
 export const ButtonText = styled.Text`
-font-size: 16px;
+font-size: 14px;
 font-weight: bold;
 /* background: #999; */
 color: #fff;

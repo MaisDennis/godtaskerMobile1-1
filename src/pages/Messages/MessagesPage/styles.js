@@ -17,7 +17,7 @@ export const Header = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 8%; /* maintain in px. */
+  height: 42px; /* maintain in px. */
   width: 100%;
   background-color: #f5f5f5;
   /* background-color: #f5f; */
@@ -59,23 +59,7 @@ export const SearchBarTextInput = styled.TextInput`
 
 export const Title = styled.Text`
   font-weight: bold;
-  font-size: 12px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   color: #999;
   margin: 12px auto 0;
-`;
-
-export const UpperTabView = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  width: 25%;
-  border-radius: 16px;
-  margin: 4px auto;
-  background-color: #666;
-`;
-export const UpperTabText = styled.Text`
-font-size: 12px;
-color: #fff;
 `;

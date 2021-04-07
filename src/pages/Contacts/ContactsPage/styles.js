@@ -17,7 +17,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-height: 8%; /* maintain in px. */
+height: 42px; /* maintain in px. */
 width: 100%;
 background-color: #f5f5f5;
 /* background-color: #f5f; */

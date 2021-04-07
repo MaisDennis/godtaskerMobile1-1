@@ -42,6 +42,7 @@ width: 100%;
 export const FormInputWorkerPassword = styled(TextInput)`
   height: 56px;
   width: 80%;
+  /* border-radius: 4px; */
   border: 1px solid #999;
   margin: 8px auto;
   padding-left: 12px;
@@ -76,7 +77,9 @@ export const ImageGodtaskerFont = styled.Image`
 export const PhoneMask = styled(InputMask)`
   height: 56px;
   width: 80%;
-  border-radius: 4px;
+  /* border-radius: 4px; */
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   border: 1px solid #999;
   padding-left: 12px;
   margin: 8px auto;
@@ -84,9 +87,15 @@ export const PhoneMask = styled(InputMask)`
   background-color: #f5f5f5;
 `;
 
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(TouchableOpacity)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   height: 56px;
   width: 80%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   margin: 8px auto;
   background-color: #666;
   /* width: 148px; */

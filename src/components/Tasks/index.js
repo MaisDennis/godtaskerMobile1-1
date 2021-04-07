@@ -50,6 +50,7 @@ export default function Task({ data, navigation, taskConditionIndex }) {
   const dispatch = useDispatch();
   const userData = data.user
   const dueDate = parseISO(data.due_date);
+  const endDate = parseISO(data.end_date);
   const subTasks = data.sub_task_list
 
   const [toggleTask, setToggleTask] = useState();
@@ -110,6 +111,12 @@ export default function Task({ data, navigation, taskConditionIndex }) {
   const pastDueDate = () => {
     let flag = false;
     new Date() > dueDate ? flag = true : flag = false
+    return flag
+  }
+
+  const endPastDueDate = () => {
+    let flag = false;
+    endDate > dueDate ? flag = true : flag = false
     return flag
   }
 
@@ -233,10 +240,7 @@ export default function Task({ data, navigation, taskConditionIndex }) {
                   )
                   : (
                     <UserImageBackground>
-                      { Platform.OS === 'ios'
-                        ? (<UserImage source={{ sourceURL: userData.avatar.url }}/>)
-                        : (<UserImage source={{ uri: userData.avatar.url }}/>)
-                      }
+                      <UserImage source={{ uri: userData.avatar.url }}/>
                     </UserImageBackground>
                   )
                 }
@@ -269,8 +273,8 @@ export default function Task({ data, navigation, taskConditionIndex }) {
                    { data.end_date
                       ? (
                         <>
-                          <LabelEnded pastDueDate={pastDueDate()}>Finalizou!</LabelEnded>
-                          <DueTimeView pastDueDate={pastDueDate()}>
+                          <LabelEnded pastDueDate={pastDueDate()}>Enc.</LabelEnded>
+                          <DueTimeView pastDueDate={endPastDueDate()}>
                             <DueTime>{formattedDate(data.end_date)}</DueTime>
                           </DueTimeView>
                         </>
@@ -317,7 +321,7 @@ export default function Task({ data, navigation, taskConditionIndex }) {
           </MainHeaderView>
 
           <AsideView>
-            <AlignView>
+            {/* <AlignView> */}
               { (hasUnread(data.sub_task_list) === 0)
                 ? (
                   null
@@ -338,7 +342,7 @@ export default function Task({ data, navigation, taskConditionIndex }) {
                   </BellIcon>
                 )
               }
-            </AlignView>
+            {/* </AlignView> */}
           </AsideView>
         </HeaderView>
       </TouchableOpacity>
@@ -379,11 +383,32 @@ export default function Task({ data, navigation, taskConditionIndex }) {
             <DetailsView>
               <TagView>
                 <Label>Prazo com horário:</Label>
-                <DueTimeView pastDueDate={pastDueDate()}>
-                  <DueTime>{formattedDateTime(data.due_date)}</DueTime>
-                </DueTimeView>
+                { data.end_date !== null
+                  ? (
+                    <DueTimeView style={{backgroundColor:'#f5f5f5'}}>
+                      <DueTime>{formattedDateTime(data.due_date)}</DueTime>
+                    </DueTimeView>
+                  )
+                  : (
+                    <DueTimeView pastDueDate={pastDueDate()}>
+                      <DueTime>{formattedDateTime(data.due_date)}</DueTime>
+                    </DueTimeView>
+                  )
+                }
               </TagView>
             </DetailsView>
+            { data.end_date !== null &&
+              (
+                <DetailsView>
+                  <TagView>
+                    <Label>Enc. com horário:</Label>
+                    <DueTimeView pastDueDate={endPastDueDate()}>
+                      <DueTime>{formattedDateTime(data.end_date)}</DueTime>
+                    </DueTimeView>
+                  </TagView>
+                </DetailsView>
+              )
+            }
             <DetailsView>
               <TagView>
                 <Label>Complexidade:</Label>
@@ -461,10 +486,7 @@ export default function Task({ data, navigation, taskConditionIndex }) {
             <ImageWrapper>
               <Label>Foto de confirmação:</Label>
               <ImageView>
-                { Platform.OS === 'ios'
-                  ? (<Image source={{ sourceURL: data.signature.url }}/>)
-                  : (<Image source={{ uri: data.signature.url }}/>)
-                }
+                <Image source={{ uri: data.signature.url }}/>
               </ImageView>
             </ImageWrapper>
           }

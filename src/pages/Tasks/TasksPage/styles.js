@@ -64,7 +64,7 @@ export const SpaceView = styled.View`
 
 export const Title3 = styled.Text`
   font-weight: bold;
-  font-size: 12px;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
   color: #999;
   margin: 12px auto 0;
   /* background-color: #4433ee; */

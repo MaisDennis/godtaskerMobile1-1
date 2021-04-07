@@ -198,20 +198,9 @@ export default function Messages({ data, navigation }) {
                       </WorkerImageBackgroundView>
                     )
                     : (
-                      <>
-                        { Platform.OS === 'ios'
-                          ? (
-                            <WorkerImageBackgroundView>
-                              <Image source={{ sourceURL: userData.avatar.url }}/>
-                            </WorkerImageBackgroundView>
-                            )
-                          : (
-                            <WorkerImageBackgroundView>
-                              <Image source={{ uri: userData.avatar.url }}/>
-                            </WorkerImageBackgroundView>
-                            )
-                        }
-                      </>
+                      <WorkerImageBackgroundView>
+                        <Image source={{ uri: userData.avatar.url }}/>
+                      </WorkerImageBackgroundView>
                     )
                   }
                 </AlignView>
@@ -229,20 +218,9 @@ export default function Messages({ data, navigation }) {
 
                     )
                     : (
-                      <>
-                        { Platform.OS === 'ios'
-                          ? (
-                            <UserImageBackgroundView>
-                              <Image source={{ sourceURL: workerData.avatar.url }}/>
-                            </UserImageBackgroundView>
-                          )
-                          : (
-                            <UserImageBackgroundView>
-                              <Image source={{ uri: workerData.avatar.url }}/>
-                            </UserImageBackgroundView>
-                          )
-                        }
-                      </>
+                      <UserImageBackgroundView>
+                        <Image source={{ uri: workerData.avatar.url }}/>
+                      </UserImageBackgroundView>
                     )
                   }
                 </AlignView>
