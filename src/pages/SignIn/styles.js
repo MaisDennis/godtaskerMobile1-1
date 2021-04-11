@@ -61,10 +61,6 @@ export const FormWorker = styled.View`
 export const ImageLogo = styled.Image`
   width: 148px;
   height: 148px;
-  /* width: 100px; */
-  /* height: 100px; */
-  /* border-radius: 24px; */
-  /* margin: 120px auto 4px; */
   margin: auto;
 `;
 

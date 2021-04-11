@@ -108,16 +108,16 @@ const formattedDateTime = fdate =>
     return flag
   }
 
-  // async function updateBell(editedSubTaskList) {
-  //   try {
-  //     await api.put(`tasks/${data.id}`, {
-  //       sub_task_list: editedSubTaskList
-  //     })
-  //   }
-  //   catch(error) {
-  //     console.log('error in put tasks/:id')
-  //   }
-  // }
+  async function updateBell(editedSubTaskList) {
+    try {
+      await api.put(`tasks/${data.id}`, {
+        sub_task_list: editedSubTaskList
+      })
+    }
+    catch(error) {
+      console.log('error in put tasks/:id')
+    }
+  }
 
   function handleToggleTask() {
     setToggleTask(!toggleTask)
@@ -199,12 +199,12 @@ const formattedDateTime = fdate =>
   }
   // -----------------------------------------------------------------------------
   return (
-    <Container taskConditionIndex={taskConditionIndex}>
+    <Container taskConditionIndex={taskConditionIndex} toggleTask={toggleTask}>
       <TouchableOpacity onPress={handleToggleTask}>
-        <TopHeaderView taskConditionIndex={taskConditionIndex}>
+        <TopHeaderView taskConditionIndex={taskConditionIndex} toggleTask={toggleTask}>
           <TitleView>
-            <TitleIcon name="clipboard" pastDueDate={pastDueDate()}/>
-            <TitleText pastDueDate={pastDueDate()}>{data.name} </TitleText>
+            <TitleIcon name="clipboard" pastDueDate={pastDueDate()} toggleTask={toggleTask}/>
+            <TitleText pastDueDate={pastDueDate() } toggleTask={toggleTask}>{data.name}</TitleText>
           </TitleView>
         </TopHeaderView>
 
@@ -481,7 +481,7 @@ const formattedDateTime = fdate =>
             <ImageWrapper>
               <Label>Foto de confirmação:</Label>
               <ImageView>
-                (<Image source={{ uri: data.signature.url }}/>
+                <Image source={{ uri: data.signature.url }}/>
               </ImageView>
             </ImageWrapper>
           }

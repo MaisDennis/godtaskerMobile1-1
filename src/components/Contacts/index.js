@@ -102,7 +102,6 @@ export default function Contacts({ navigation, data }) {
         <BottomTabView>
           <TabView/>
           <ButtonsView>
-
             <TouchableOpacity key={`1`} onPress={handleContactTasks}>
               <ButtonsText>tarefas</ButtonsText>
             </TouchableOpacity>

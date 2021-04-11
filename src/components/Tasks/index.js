@@ -12,7 +12,8 @@ import Icon from 'react-native-vector-icons/Feather';
 // import Button from '~/components/Button';
 import {
   AsideView, AlignBottomView, AlignView,
-  AlignDatesView, AlignDetailsView, AlignCheckBoxView, AcceptButton,
+  AlignDatesView, AlignDetailsView, AlignCheckBoxView,
+  AcceptButton, AcceptButtonView,
   ButtonView, ButtonText, BottomHeaderView,
   BellIcon, ButtonIcon, ButtonWrapper,
   ConfirmButton, CheckBoxView, Container,
@@ -221,10 +222,10 @@ export default function Task({ data, navigation, taskConditionIndex }) {
   return (
     <Container taskConditionIndex={taskConditionIndex}>
       <TouchableOpacity onPress={handleToggleTask}>
-        <TopHeaderView taskConditionIndex={taskConditionIndex}>
+        <TopHeaderView taskConditionIndex={taskConditionIndex} toggleTask={toggleTask}>
           <TitleView>
-            <TaskIcon name="clipboard" pastDueDate={pastDueDate()}/>
-            <TitleText pastDueDate={pastDueDate()}>{data.name} </TitleText>
+            <TaskIcon name="clipboard" pastDueDate={pastDueDate()} toggleTask={toggleTask}/>
+            <TitleText pastDueDate={pastDueDate()} toggleTask={toggleTask}>{data.name}</TitleText>
           </TitleView>
         </TopHeaderView>
 
@@ -458,28 +459,30 @@ export default function Task({ data, navigation, taskConditionIndex }) {
               </DatesAndButtonView>
             )
             : (
-              <ButtonWrapper>
-                { taskConditionIndex === 1
-                  ? (
-                    <>
-                      <ModalText>Tem certeza de que quer recusar a tarefa?</ModalText>
-                      <ButtonView onPress={handleToggleAccept}>
-                        <AcceptButton>
-                          <ButtonText>Aceitar</ButtonText>
-                        </AcceptButton>
-                      </ButtonView>
-                      <ButtonView onPress={() => setToggleModal(!toggleModal)}>
-                        <RejectButton>
-                        <ButtonText>Recusar</ButtonText>
-                        </RejectButton>
-                      </ButtonView>
-                    </>
-                  )
-                  : (
-                    null
-                  )
-                }
-              </ButtonWrapper>
+              <AcceptButtonView>
+                <ModalText>Aceitar a tarefa?</ModalText>
+                <ButtonWrapper>
+                  { taskConditionIndex === 1
+                    ? (
+                      <>
+                        <ButtonView onPress={handleToggleAccept}>
+                          <AcceptButton>
+                            <ButtonText>Aceitar</ButtonText>
+                          </AcceptButton>
+                        </ButtonView>
+                        <ButtonView onPress={() => setToggleModal(!toggleModal)}>
+                          <RejectButton>
+                          <ButtonText>Recusar</ButtonText>
+                          </RejectButton>
+                        </ButtonView>
+                      </>
+                    )
+                    : (
+                      null
+                    )
+                  }
+                </ButtonWrapper>
+              </AcceptButtonView>
             )
           }
           { data.signature &&

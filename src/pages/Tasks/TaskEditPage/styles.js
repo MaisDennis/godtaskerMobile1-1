@@ -25,7 +25,7 @@ export const Container = styled.SafeAreaView`
 
 export const DateOptionsView = styled.View`
   display: flex;
-  width: 80%;
+  width: 90%;
   border-radius: 4px;
   padding: 0 8px;
   /* border: 1px solid #666; */

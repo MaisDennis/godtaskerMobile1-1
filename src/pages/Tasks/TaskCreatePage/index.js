@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+
 import { useSelector, useDispatch } from 'react-redux';
-import { Alert, TouchableOpacity } from 'react-native'
+import { Alert, Text, TouchableOpacity } from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
 import Modal from 'react-native-modal';
 // -----------------------------------------------------------------------------
@@ -13,6 +14,10 @@ import {
   LabelText,
   ModalButtonWrapper, ModalView,
   Options,
+  RadioButtonView, RadioButtonTag, RadioButtonTagConfirmPhoto,
+  RadioButtonLabel, RadioButtonOuter, RadioButtonInner1,
+  RadioButtonInner2, RadioButtonInner3, RadioButtonInner4,
+  RadioButtonLabelText,
   SubTaskLabelText, SubTaskInput, SubTaskText,
   SubTaskWeigeText, SubTaskIcon, SubTaskButton,
   SubTaskView, SubTaskItemView, SubTaskButtonView,
@@ -347,38 +352,125 @@ export default function TaskCreatePage({ navigation }) {
 
         <ItemWrapperView>
           <LabelText>Prioridades:</LabelText>
-          <Options selectedValue={prior} onValueChange={setPrior}>
+          {/* <Options selectedValue={prior} onValueChange={setPrior}>
             { taskAttributesArray.map(t => (
               <Options.Item key={t.id} label={t.tag} value={t.id}/>
             ))}
-          </Options>
+          </Options> */}
+          <RadioButtonView>
+            <RadioButtonTag onPress={() => setPrior(1)}>
+              <RadioButtonLabel>baixa</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setPrior(2)}>
+              <RadioButtonLabel>média</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setPrior(3)}>
+              <RadioButtonLabel>alta</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner3 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setPrior(4)}>
+              <RadioButtonLabel>n/a</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner4 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>
           <LabelText>Urgência:</LabelText>
-          <Options selectedValue={urgent} onValueChange={setUrgent}>
-            { taskAttributesArray.map(t => (
-              <Options.Item key={t.id} label={t.tag} value={t.id}/>
-            ))}
-          </Options>
+          <RadioButtonView>
+            <RadioButtonTag onPress={() => setUrgent(1)}>
+              <RadioButtonLabel>baixa</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setUrgent(2)}>
+              <RadioButtonLabel>média</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setUrgent(3)}>
+              <RadioButtonLabel>alta</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner3 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setUrgent(4)}>
+              <RadioButtonLabel>n/a</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner4 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>
           <LabelText>Complexidade:</LabelText>
-          <Options selectedValue={complex} onValueChange={setComplex}>
+          {/* <Options selectedValue={complex} onValueChange={setComplex}>
             { taskAttributesArray.map(t => (
               <Options.Item key={t.id} label={t.tag} value={t.id}/>
             ))}
-          </Options>
+          </Options> */}
+          <RadioButtonView>
+            <RadioButtonTag onPress={() => setComplex(1)}>
+              <RadioButtonLabel>baixa</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setComplex(2)}>
+              <RadioButtonLabel>média</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setComplex(3)}>
+              <RadioButtonLabel>alta</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner3 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setComplex(4)}>
+              <RadioButtonLabel>n/a</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner4 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>
-          <LabelText>Requer foto de confirmação ao completar a tarefa?</LabelText>
-          <Options selectedValue={confirmPhoto} onValueChange={setConfirmPhoto}>
+          <RadioButtonLabelText>Requer foto de confirmação ao completar a tarefa?</RadioButtonLabelText>
+          {/* <Options selectedValue={confirmPhoto} onValueChange={setConfirmPhoto}>
             { confirmPhotoArray.map(t => (
               <Options.Item key={t.id} label={t.tag} value={t.id}/>
             ))}
-          </Options>
+          </Options> */}
+          <RadioButtonView>
+            <RadioButtonTagConfirmPhoto onPress={() => setConfirmPhoto(1)}>
+              <RadioButtonLabel>Sim</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={confirmPhoto}/>
+              </RadioButtonOuter>
+            </RadioButtonTagConfirmPhoto>
+            <RadioButtonTagConfirmPhoto onPress={() => setConfirmPhoto(2)}>
+              <RadioButtonLabel>Não é requisito</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={confirmPhoto}/>
+              </RadioButtonOuter>
+            </RadioButtonTagConfirmPhoto>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>
@@ -386,17 +478,18 @@ export default function TaskCreatePage({ navigation }) {
             <SubmitButtonText>Enviar</SubmitButtonText>
           </SubmitButton>
         </ItemWrapperView>
+
         <Modal isVisible={toggleModal}>
           { submitError
             ? (
               <ModalView>
-                <Text>Error</Text>
+                {/* <Text>Error</Text> */}
               </ModalView>
             )
             : (
               <ModalView>
-                <LabelText>Funcionário(s):</LabelText>
                 <CheckBoxWrapper>
+                  <LabelText>Funcionário(s):</LabelText>
                   { contacts.map((c, index) => (
                     <AlignCheckBoxView key={index}>
                       <CheckBoxView>
@@ -416,6 +509,7 @@ export default function TaskCreatePage({ navigation }) {
               </ModalView>
             )
           }
+
           <ModalButtonWrapper>
             <TouchableOpacity onPress={handleToggleModal}>
               <ItemWrapperView>
@@ -426,6 +520,7 @@ export default function TaskCreatePage({ navigation }) {
                 </SubmitView>
               </ItemWrapperView>
             </TouchableOpacity>
+
             <TouchableOpacity onPress={handleSubmit}>
               <ItemWrapperView>
                 <SubmitView>
@@ -436,6 +531,7 @@ export default function TaskCreatePage({ navigation }) {
               </ItemWrapperView>
             </TouchableOpacity>
           </ModalButtonWrapper>
+
         </Modal>
       </FormScrollView>
     </Container>

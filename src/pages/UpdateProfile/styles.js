@@ -46,7 +46,8 @@ export const FormInput = styled.TextInput`
   padding-left: 16px;
   margin: 8px 0;
   border-radius: 4px;
-  border: 1px solid #999;
+  border-width: 1px;
+  border-color: #999;
   color: #222;
   background-color: #fff;
 `;
@@ -68,7 +69,6 @@ export const Options = styled(Picker)`
   padding-left: 16px;
   margin: 8px 0;
   border-radius: 4px;
-  border: 1px solid #999;
   color: #222;
   background-color: #ddd;
 `;
@@ -78,7 +78,8 @@ export const PhoneMask = styled(InputMask)`
   padding-left: 16px;
   margin: 8px 0;
   border-radius: 4px;
-  border: 1px solid #999;
+  border-width: 1px;
+  border-color: #999;
   color: #222;
   background-color: #fff;
 `;
@@ -104,7 +105,8 @@ export const UserImage = styled.Image`
   height: 76px;
   width: 76px;
   border-radius: 76px;
-  border: 1px solid #fff;
+  border-width: 1px;
+  border-color: #999;
   background-color: #fff;
 `;
 
@@ -116,6 +118,7 @@ export const UserImageBackgroundView = styled(TouchableOpacity)`
   height: 80px;
   width: 80px;
   border-radius: 80px;
-  border: 1px solid #666;
+  border-width: 1px;
+  border-color: #666;
   /* background-color: #f00; */
 `;

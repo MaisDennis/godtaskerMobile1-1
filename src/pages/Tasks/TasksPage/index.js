@@ -14,7 +14,7 @@ import {
   List,
   Header, HeaderImage, HeaderTabView, HeaderTouchable,
   SpaceView,
-  Title3,
+  Title, TitleNumber,
   UpperTabView, UpperTabText,
 } from './styles';
 // -----------------------------------------------------------------------------
@@ -86,7 +86,7 @@ export default function Dashboard({ navigation }) {
       </HeaderTabView>
       { tasks == ''
         ? (
-          <Title3>Sem tarefas nessa condição.</Title3>
+          <Title>Sem tarefas nessa condição.</Title>
         )
         : (
           <List
@@ -94,7 +94,7 @@ export default function Dashboard({ navigation }) {
             keyExtractor={item => String(item.id)}
             renderItem={({ item, index }) => (
               <>
-                <Title3>{index+1}</Title3>
+                <TitleNumber>{index+1}</TitleNumber>
                 <Task
                   key={item.id}
                   data={item}

@@ -1,11 +1,8 @@
-import { Platform, ScrollView } from 'react-native';
+import { Platform, ScrollView, TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { TextInputMask as InputMask } from 'react-native-masked-text'
 import { Picker } from '@react-native-picker/picker';
 import Icon from 'react-native-vector-icons/Feather';
-// -----------------------------------------------------------------------------
-import Input from '~/components/Input';
-import Button from '~/components/Button';
 // -----------------------------------------------------------------------------
 
 export const AllIcon = styled(Icon)`
@@ -24,13 +21,9 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
   behavior: 'height',
 })`
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 100%;
-  margin: 0 auto;
+
+
   /* background-color: #44ee33; */
 `;
 
@@ -41,11 +34,14 @@ export const Form = styled.ScrollView`
   /* background-color: #4433ee; */
 
 `;
-export const FormInput = styled(Input)`
-  height: 56px;
+export const FormInput = styled.TextInput`
+  height: 48px;
   width: 80%;
+  border-radius: 1px;
   border: 1px solid #999;
   margin: 8px auto;
+  margin: 8px auto;
+  padding-left: 12px;
   color: #222;
   background-color: #f5f5f5;
   /* background: #c4ce3b; */
@@ -57,8 +53,21 @@ export const HrLine = styled.View`
   width: 50%;
   margin: 12px 0;
 `;
+
+export const ImageLogo = styled.Image`
+  width: 148px;
+  height: 148px;
+  margin: auto;
+`;
+
+export const ImageGodtaskerFont = styled.Image`
+  width: 240px;
+  height: 80px;
+  margin: auto;
+`;
+
 export const Options = styled(Picker)`
-  height: 56px;
+  height: 48px;
   width: 80%;
   border-radius: 4px;
   border: 1px solid #999;
@@ -68,22 +77,31 @@ export const Options = styled(Picker)`
   /* background: #c4ce3b; */
 `;
 export const PhoneMask = styled(InputMask)`
-  height: 56px;
+  height: 48px;
   width: 80%;
-  border: 1px solid #999;
+  border-width: 1px;
+  border-color: #999;
+  border-radius: 4px;
   margin: 8px auto;
   padding-left: 12px;
   color: #222;
   background-color: #f5f5f5;
   /* background: #c4ce3b; */
 `;
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(TouchableOpacity)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 80%;
+  border-radius: 4px;
   margin: 16px;
-  width: 148px;
+  background-color: #666;
 `;
 export const SignUpErrorText = styled.Text`
-  color: #f3c775;
-  /* font-weight: bold; */
+  color: #f64C75;
+  font-weight: bold;
   font-size: 16px;
 `;
 
@@ -95,8 +113,8 @@ export const Wrapper = styled.View`
   height: auto;
   width: 100%;
   min-width: 320px;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   padding-bottom: 24px;
-  margin: 24px auto;
+  /* margin: 24px auto; */
   background-color: #f5f5f5;
 `;

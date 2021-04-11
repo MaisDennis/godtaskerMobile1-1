@@ -14,7 +14,7 @@ import {
   List,
   Header, HeaderImage, HeaderTabView, HeaderTouchable,
   SpaceView,
-  Title3,
+  Title, TitleNumber,
   UpperTabView, UpperTabText,
 } from './styles';
 // -----------------------------------------------------------------------------
@@ -98,29 +98,22 @@ export default function UserPage({ navigation }) {
         <UpperTabView onPress={() => loadCanceled('', user_id)}>
           <UpperTabText>canceladas</UpperTabText>
         </UpperTabView>
-        {/* <UpperTabView>
-          <TouchableOpacity onPress={() => loadAll('', user_id)}>
-            <UpperTabText>todas</UpperTabText>
-          </TouchableOpacity>
-        </UpperTabView> */}
       </HeaderTabView>
       { tasks == ''
         ? (
-          <Title3>Sem tarefas nessa condição.</Title3>
+          <Title>Sem tarefas nessa condição.</Title>
         )
         : (
-          // <ScrollView>
-            <List
-              data={tasks}
-              keyExtractor={item => String(item.id)}
-              renderItem={({ item, index }) => (
-                <>
-                  <Title3>{index+1}</Title3>
-                  <TaskUser key={item.id} data={item} navigation={navigation} taskConditionIndex={taskConditionIndex}/>
-                </>
-              )}
-            />
-          // </ScrollView>
+          <List
+            data={tasks}
+            keyExtractor={item => String(item.id)}
+            renderItem={({ item, index }) => (
+              <>
+                <TitleNumber>{index+1}</TitleNumber>
+                <TaskUser key={item.id} data={item} navigation={navigation} taskConditionIndex={taskConditionIndex}/>
+              </>
+            )}
+          />
         )
       }
     </Container>

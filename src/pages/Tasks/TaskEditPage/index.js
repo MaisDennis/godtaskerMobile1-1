@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { parseISO } from 'date-fns';
 // -----------------------------------------------------------------------------
@@ -110,7 +111,7 @@ export default function TaskEditPage({ navigation, route }) {
     try {
       weigeToPercentage(subTaskList)
 
-      await api.put(`tasks/${data.id}/notification`, {
+      await api.put(`tasks/${data.id}/notification/user`, {
         name: name,
         description: description,
         sub_task_list: subTaskList,
@@ -118,11 +119,13 @@ export default function TaskEditPage({ navigation, route }) {
         start_date: startDate,
         due_date: dueDate,
       });
-      dispatch(updateTasks(new Date()))
-      navigation.goBack();
+      // dispatch(updateTasks(new Date()))
+      // navigation.goBack();
+      Alert.alert('Tarefa editada com sucesso!')
     }
     catch(error) {
       console.log(error)
+      Alert.alert('Erro ao editar a tarefa.')
     }
 
   }

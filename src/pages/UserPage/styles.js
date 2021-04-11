@@ -10,6 +10,7 @@ color: #666;
 
 export const Container = styled.SafeAreaView`
   height: 100%;
+  background-color: #f5f5f5;
 `;
 
 export const Header = styled.View`
@@ -66,11 +67,18 @@ export const SpaceView = styled.View`
 /* background-color: #f5f; */
 `;
 
-export const Title3 = styled.Text`
+export const Title = styled.Text`
   font-weight: bold;
   font-size: 12px;
   color: #999;
   margin: 12px auto 0;
+  /* background-color: #4433ee; */
+`;
+export const TitleNumber = styled.Text`
+  font-weight: bold;
+  font-size: 12px;
+  color: #999;
+  margin: 0 auto 0;
   /* background-color: #4433ee; */
 `;
 

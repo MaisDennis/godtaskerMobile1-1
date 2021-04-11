@@ -22,7 +22,7 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-height: 8%;
+height: 42px;
 width: 100%;
 background-color: #f5f5f5;
 `;

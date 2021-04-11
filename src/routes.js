@@ -58,17 +58,18 @@ export default function App() {
       />
       <Stack.Screen name="SignUp" component={SignUp}
         options={{
-          headerTitle: (() => (
-            <Header>
-
-            </Header>
-          )),
+          headerTitle: (() => (<HeaderView data={'Criar um usuário'}/>)),
           headerShown: true,
-          headerBackTitleVisible: false,
-          headerTintColor: '#fff',
           headerStyle: {
-            height: 42,
-            backgroundColor: '#222',
+            height: headerHeight,
+            backgroundColor: '#f5f5f5',
+          },
+          headerBackTitleVisible: headerBackVisible,
+          headerBackTitle: "Voltar",
+          headerBackTitleStyle: {
+            fontSize: headerBackFontSize,
+            marginLeft: 8,
+            color: '#4433ee',
           },
         }}
       />

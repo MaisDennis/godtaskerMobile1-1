@@ -41,30 +41,6 @@ export default function UpdateProfile({ navigation, route }) {
   const [imagePath, setImagePath] = useState();
   const [previewImage, setPreviewImage] = useState();
 
-  // const schema = Yup.object().shape({
-  //   first_name: Yup.string().required('O nome é obrigatório'),
-  //   last_name: Yup.string().required('O sobrenome é obrigatório'),
-  //   user_name: Yup.string().required('O nome de usuário é obrigatório'),
-  //   password: Yup.string().min(6,'No mínimo 6 caracteres.').required('A senha é obrigatorória'),
-  //   confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'A senha confirmada não é igual'),
-  //   // phonenumber: Yup.string()
-  //   // .required()
-  //   // .min(11),
-  //   email: Yup.string().email('Insira um e-mail válido').required('O e-mail é obrigatório'),
-  //   birth_date: Yup.string(),
-  //   gender: Yup.string().required('Escolha o gênero'),
-  // });
-
-  // console.log(user)
-  // const lastNameRef = useRef();
-  // const userNameRef = useRef();
-  // const passwordRef = useRef();
-  // const confirmPasswordRef = useRef();
-  // const phonenumberRef = useRef();
-  // const emailRef = useRef();
-  // const birthDateRef = useRef();
-  // const genderRef = useRef();
-
   const genderOptions = [ 'feminino', 'masculino', 'alien', 'outro', '']
 
   async function handleUpdatePhoto() {
@@ -132,10 +108,10 @@ export default function UpdateProfile({ navigation, route }) {
       <Container>
         <Form contentContainerStyle={{ alignItems: 'center' }}>
         <AllIcon name='user'/>
-          <ImageWrapper onPress={() => handleUpdatePhoto()}>
+          <ImageWrapper>
             { imagePath
               ? (
-                <UserImageBackgroundView>
+                <UserImageBackgroundView onPress={() => handleUpdatePhoto()}>
                   <UserImage
                     source={{uri: imagePath}}
                   />
@@ -145,7 +121,7 @@ export default function UpdateProfile({ navigation, route }) {
                 <>
                   { userData === undefined || userData.avatar === null
                     ? (
-                      <UserImageBackgroundView>
+                      <UserImageBackgroundView onPress={() => handleUpdatePhoto()}>
                         <UserImage
                           source={require('~/assets/insert_photo-24px.svg')}
                         />
@@ -153,7 +129,7 @@ export default function UpdateProfile({ navigation, route }) {
                       </UserImageBackgroundView>
                     )
                     : (
-                      <UserImageBackgroundView>
+                      <UserImageBackgroundView onPress={() => handleUpdatePhoto()}>
                         <UserImage
                           source={
                             userData.avatar

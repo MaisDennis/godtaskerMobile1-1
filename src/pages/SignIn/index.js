@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // -----------------------------------------------------------------------------
 import { signInRequest } from '~/store/modules/auth/actions';
@@ -23,8 +23,11 @@ export default function SignIn({ navigation }) {
   const [password, setPassword] = useState('');
   const loading = useSelector(state => state.auth.loading);
   const signed = useSelector(state => state.auth.signed);
+  const passwordRef = useRef();
+
   // const test = route.params.phonenumber;
   // console.tron.log(route.params)
+
   function handleSubmit() {
     const unmaskedPhoneNumber = (
       maskedPhoneNumber => maskedPhoneNumber.replace(/[()\s-]/g, '')
@@ -69,10 +72,11 @@ export default function SignIn({ navigation }) {
                   dddMask: '(99) ',
                 }}
                 placeholder="Número de Whatsapp"
+                placeholderTextColor={'#999'}
+                onSubmitEditing={() => passwordRef.current.focus()}
                 returnKeyType="next"
                 value={phonenumber}
                 onChangeText={setPhonenumber}
-                placeholderTextColor={'#999'}
               />
               <FormInputWorkerPassword
                 // icon="unlock"
@@ -82,6 +86,7 @@ export default function SignIn({ navigation }) {
                 onSubmitEditing={handleSubmit}
                 value={password}
                 onChangeText={setPassword}
+                ref={passwordRef}
               />
               <SubmitButton
                 loading={loading}
@@ -92,7 +97,7 @@ export default function SignIn({ navigation }) {
               <SignUpButton
                 onPress={handleSignUp}
               >
-                <SignUpText>Criar conta gratuita!</SignUpText>
+                <SignUpText>Criar um usuário grátis!</SignUpText>
               </SignUpButton>
             </FormWorker>
           </Wrapper>

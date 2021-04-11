@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity } from 'react-native'
+import { Text, TouchableOpacity, SafeAreaView } from 'react-native'
 import { useSelector } from 'react-redux';
 import { format } from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -11,7 +11,6 @@ import {
   List,
   SearchBarTextInput,
   Title,
-  UpperTabText,
 } from './styles'
 import HeaderView from '~/components/HeaderView'
 import Contacts from '~/components/Contacts'
@@ -24,12 +23,6 @@ export default function ContactsPage({ navigation }) {
   const [contacts, setContacts] = useState([]);
   const [defaultContacts, setDefaultContacts] = useState([]);
   const [inputState, setInputState] = useState('');
-
-  const formattedDate = fdate =>
-  fdate == null
-    ? '-'
-    : format(fdate, "dd 'de' MMMM',' yyyy", { locale: pt });
-  const todayDate = formattedDate(new Date())
 
   useEffect(() => {
     loadContacts(userId);
@@ -45,7 +38,7 @@ export default function ContactsPage({ navigation }) {
     if(response.data) {
       const sortedResponseData = response.data.sort(compare)
       setContacts(sortedResponseData)
-      // setContacts('HELLO')
+      // setContacts('Hi')
       setDefaultContacts(sortedResponseData)
     }
 
@@ -101,12 +94,17 @@ export default function ContactsPage({ navigation }) {
           <List
             data={contacts}
             keyExtractor={item => String(item.phonenumber)}
+
             renderItem={({ item }) => (
-              <Contacts
+              // <Contacts
+              //   key={item.phonenumber}
+              //   data={item}
+              //   navigation={navigation}
+              // />
+              <SafeAreaView
                 key={item.phonenumber}
                 data={item}
-                navigation={navigation}
-              />
+              ><Text>{item.phonenumber}</Text></SafeAreaView>
             )}
           />
         )

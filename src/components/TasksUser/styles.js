@@ -95,9 +95,12 @@ export const Container = styled.View`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 8px 0 4px;
+  margin: 4px 0 4px;
   padding: 0;
-  background-color: ${props => props.taskConditionIndex === 1 ? '#fff' : '#ccc'};
+  background-color: ${ props => props.taskConditionIndex === 1
+    ? '#fff'
+    : '#eee'
+  };
   /* background-color: #F5F5; */
 `;
 
@@ -284,19 +287,18 @@ export const StartTime = styled.Text`
 export const TitleIcon = styled(Icon)`
 font-size: 20px;
 margin-right: 8px;
-color: #009966;
+color: ${props => props.toggleTask === true ? '#f0fff0' : '#009966'};
 `;
 export const TaskIcon = styled(Icon)`
 font-size: 21px;
 padding: 4px 16px;
 color: #4433ee;
-/* color: ${props => props.pastDueDate == true ? '#f64C75' : '#009966'}; */
   /* background-color: #f00; */
 `;
 export const TitleText = styled.Text`
   font-weight: 700;
   font-size: ${Platform.OS === 'ios' ? '15px' : '14px'};
-  color: #009966;
+  color: ${props => props.toggleTask === true ? '#f0fff0' : '#009966'};
 `;
 export const TagView = styled.View`
   display: flex;
@@ -325,8 +327,10 @@ export const TopHeaderView = styled.View`
   display: flex;
   flex-direction:column;
   width: 100%;
-  /* background-color: #009966; */
-  background-color: #f0fff0;
+  background-color: ${ props => props.toggleTask === true
+    ? '#009966'
+    : '#f0fff0'
+  };
 `;
 export const TaskAttributesView = styled.View`
   display: flex;

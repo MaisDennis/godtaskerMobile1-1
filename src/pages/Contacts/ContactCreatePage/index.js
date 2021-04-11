@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { TouchableOpacity, Alert } from 'react-native'
 // -----------------------------------------------------------------------------
 import {
-  AlignView,
   Container,
   FormScrollView,
   Input, ItemWrapperView,
@@ -19,37 +18,50 @@ export default function ContactCreatePage({ navigation }) {
   const userId = useSelector( state => state.user.profile.id)
   const dispatch = useDispatch();
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [workerName, setWorkerName] = useState("");
-  const [department, setDepartment] = useState("");
-  const [phonenumber, setPhonenumber] = useState("");
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [workerName, setWorkerName] = useState();
+  const [department, setDepartment] = useState();
+  const [phonenumber, setPhonenumber] = useState();
+
+
 
   function handleSubmit() {
-    const unmaskPhoneNumber = (
-      maskedPhoneNumber => maskedPhoneNumber.replace(/[()\s-]/g, '')
-    )
-    const unmaskedPhoneNumber = unmaskPhoneNumber(phonenumber)
-    const countryCode = '+55'
-    const parsedUnmaskedPhoneNumber = countryCode+unmaskedPhoneNumber
-    const id = Math.floor(Math.random() * 1000000)
-    try {
-      api.post(`users/${userId}/contact-list`, {
-        worker_id: id,
-        first_name: firstName,
-        last_name: lastName,
-        worker_name: workerName,
-        department: department,
-        phonenumber: parsedUnmaskedPhoneNumber,
-      })
-      dispatch(updateContacts(new Date()));
-      navigation.navigate('Contacts')
-      Alert.alert('Contato cadastrado com sucesso!')
+    if(!workerName) {
+      Alert.alert('O contato precisa de nome ou apelido.')
+      return
+    } else if(!phonenumber) {
+      Alert.alert('Por favor informar o telefone.')
+    } else {
+      try {
+        const unmaskPhoneNumber = (
+          maskedPhoneNumber => maskedPhoneNumber.replace(/[()\s-]/g, '')
+        )
+        const unmaskedPhoneNumber = unmaskPhoneNumber(phonenumber)
+        const countryCode = '+55'
+        const parsedUnmaskedPhoneNumber = countryCode+unmaskedPhoneNumber
+        const id = Math.floor(Math.random() * 1000000)
+
+          const response = api.post(`users/${userId}/contact-list`, {
+            worker_id: id,
+            first_name: firstName,
+            last_name: lastName,
+            worker_name: workerName,
+            department: department,
+            phonenumber: parsedUnmaskedPhoneNumber,
+          })
+          // dispatch(updateContacts(new Date()));
+          // navigation.navigate('Contacts')
+          console.log(response)
+          Alert.alert('Se o contato não aparecer na sua lista, talvez não tenha conta no godtasker ainda.')
+      }
+      catch (error) {
+        console.log(error)
+        Alert.alert('Erro. Por favor, verificar se o contato já possui cadastro no godtasker.')
+      }
     }
-    catch(error) {
-      console.log(error);
-      Alert.alert('Erro. Por favor, verificar se o contato já possui cadastro no godtasker.')
-    }
+
+
   }
   // ---------------------------------------------------------------------------
   return (

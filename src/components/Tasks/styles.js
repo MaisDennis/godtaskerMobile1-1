@@ -49,10 +49,24 @@ justify-content: center;
 width: 10%;
   /* background-color: #336622; */
 `;
+export const AcceptButtonView = styled.View`
+  display: flex;
+  flex-direction:column;
+  /* align-items: center; */
+  height: auto;
+  width: 100%;
+  border-radius: 4px;
+  /* background-color: #333e; */
+`;
 
 export const AcceptButton = styled.View`
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
   height: 36px;
   width: 108px;
+  border-radius: 4px;
   background-color: #18A0FB;
 `;
 
@@ -107,9 +121,12 @@ export const Container = styled.View`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 8px 0 4px;
+  margin: 4px 0 4px;
   padding: 0;
-  background-color: ${props => props.taskConditionIndex === 1 ? '#fff' : '#E0E4E2'};
+  background-color: ${props => props.taskConditionIndex === 1
+    ? '#fff'
+    : '#eee'
+  };
   /* background-color: #F5F5; */
 `;
 export const ConfirmButton = styled.View`
@@ -326,8 +343,13 @@ export const RejectTaskInput = styled.TextInput`
 `;
 
 export const RejectButton = styled.View`
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
   height: 36px;
   width: 108px;
+  border-radius: 4px;
   background-color: #999;
 `;
 
@@ -360,8 +382,10 @@ export const TopHeaderView = styled.View`
   display: flex;
   flex-direction:column;
   width: 100%;
-  /* background-color: #334466; */
-  background-color: #E7EEFF;
+  background-color: ${ props => props.toggleTask === true
+    ? '#334466'
+    : '#E7EEFF'
+  };
 `;
 export const TitleView = styled.View`
   display: flex;
@@ -376,13 +400,12 @@ export const TaskIcon = styled(Icon)`
 color: #222;
 font-size: 21px;
 margin-right: 8px;
-color: #fff;
-color: #334466;
+color: ${props => props.toggleTask === true ? '#E7EEFF' : '#334466'};
 `;
 export const TitleText = styled.Text`
   font-weight: 700;
   font-size: ${Platform.OS === 'ios' ? '15px' : '14px'};
-  color: #334466;
+  color: ${props => props.toggleTask === true ? '#E7EEFF' : '#334466'};
 `;
 export const TitleIcon = styled(Icon)`
 font-size: 20px;
