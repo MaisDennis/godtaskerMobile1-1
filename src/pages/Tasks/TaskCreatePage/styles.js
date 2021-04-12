@@ -91,6 +91,7 @@ export const Input = styled.TextInput`
   padding: 12px;
   border-radius: 4px;
   border: 1px solid #999;
+  color: #222;
   background-color: #fff;
 `;
 export const ItemWrapperView = styled.View`
@@ -165,13 +166,18 @@ export const RadioButtonTagConfirmPhoto = styled(TouchableOpacity)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  width: 40%;
   height: auto;
   margin: 8px;
   /* background-color: #999; */
 `;
 
 export const RadioButtonLabel = styled.Text`
+  max-width: 100%;
+  font-size: ${Platform.OS === 'ios' ? '13px' : '12px'};
+  /* font-size: 14px; */
+  font-weight: normal;
+  margin: 4px;
 `;
 export const RadioButtonLabelText = styled.Text`
   max-width: 100%;
@@ -195,6 +201,12 @@ export const RadioButtonOuter = styled.View`
   margin-top: 8px;
   background-color: #fff;
 
+`;
+export const RadioButtonInner0 = styled.View`
+  width: 12px;
+  height: 12px;
+  border-radius: 12px;
+  background-color: ${props => props.switch === 0 ? '#666' : '#fff'};
 `;
 export const RadioButtonInner1 = styled.View`
   width: 12px;
@@ -220,6 +232,7 @@ export const RadioButtonInner4 = styled.View`
   border-radius: 12px;
   background-color: ${props => props.switch === 4 ? '#666' : '#fff'};
 `;
+
 
 export const SubTaskView = styled.View`
     display: flex;

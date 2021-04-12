@@ -18,6 +18,7 @@ import { updateImageRequest } from '~/store/modules/image/actions';
 // -----------------------------------------------------------------------------
 export default function Confirm({ route }) {
   const { task_id, taskName } = route.params;
+  const [ photoImage, setPhotoImage] = useState();
   const [toggleFlash, setToggleFlash] = useState(true);
   const [toggleCameraReverse, setToggleCameraReverse] = useState(true);
   const camera = useRef(null);
@@ -48,7 +49,8 @@ export default function Confirm({ route }) {
 
       const formData = new FormData();
       formData.append('signatureImage', {
-        uri: Platform.OS === 'ios' ? data.sourseURL : data.uri,
+        uri: Platform.OS === 'ios' ? data.sourceURL : data.uri,
+        // uri: data.uri,
         type: "image/jpg",
         name: `signature_${task_id}.jpg`,
       });
@@ -99,6 +101,59 @@ export default function Confirm({ route }) {
     }
   }
 
+  async function takePhotoFromCamera() {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(async image => {
+      console.log(image)
+      const formData = new FormData();
+      formData.append('signatureImage', {
+        uri: Platform.OS === 'ios' ? image.sourceURL : image.path,
+        // uri: image.path,
+        // type: "image/jpg",
+        type: "image/jpg",
+        name: `signature_${task_id}.jpg`,
+      });
+
+      try {
+        const response = await api.post('signatures', formData);
+
+        const { signature_id } = response.data;
+
+        await api.put(`tasks/confirm/${task_id}`, {
+          signature_id,
+        });
+
+        Alert.alert(
+          'Confirmação',
+          'Enviada com sucesso!',
+          [
+            {
+              text: 'OK',
+              onPress: () => console.log('OKBJ')
+            }
+          ],
+          {cancelable: false }
+        )
+      }
+      catch {
+        Alert.alert(
+          'Confirmação',
+          'Não foi possível enviar a confirmação.',
+          [
+            {
+              text: 'OK',
+              onPress: () => console.log('OKBJ')
+            }
+          ],
+          {cancelable: false }
+        )
+      }
+    })
+  }
+
   async function chooseFromLibrary() {
     // console.warn('choose Photo')
       ImagePicker.openPicker({
@@ -110,7 +165,9 @@ export default function Confirm({ route }) {
         const formData = new FormData();
         formData.append('signatureImage', {
           uri: Platform.OS === 'ios' ? image.sourceURL : image.path,
-          type: "image/jpg",
+          // uri: image.path,
+          // type: "image/jpg",
+          type: "image/*",
           name: `signature_${task_id}.jpg`,
         });
 
@@ -191,7 +248,8 @@ export default function Confirm({ route }) {
           <CameraRollButton onPress={() => chooseFromLibrary()}>
             <Icon name='image' size={24} color='#222'/>
           </CameraRollButton>
-          <CameraButtonBackground onPress={() => takePicture()}>
+          {/* <CameraButtonBackground onPress={() => takePicture()}> */}
+          <CameraButtonBackground onPress={() => takePhotoFromCamera()}>
             <CameraButton>
               <Icon name='camera' size={24} color='#fff'/>
             </CameraButton>

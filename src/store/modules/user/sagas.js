@@ -1,10 +1,12 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
 // -----------------------------------------------------------------------------
 import api from '~/services/api';
 import { updateProfileSuccess, updateProfileFailure } from './actions';
 // -----------------------------------------------------------------------------
 export function* updateProfile({ payload }) {
+  const dispatch = useDispatch();
   try {
     const {
       first_name, last_name, user_name,
@@ -12,7 +14,7 @@ export function* updateProfile({ payload }) {
       phonenumber, email, birth_date, gender,
       image,
     } = payload;
-    // console.tron.log(payload)
+    // console.log(payload)
 
     let response = null
     let responseWorker= null;

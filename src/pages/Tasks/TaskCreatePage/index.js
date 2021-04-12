@@ -13,11 +13,11 @@ import {
   ItemWrapperView, Input,
   LabelText,
   ModalButtonWrapper, ModalView,
-  Options,
+  // Options,
   RadioButtonView, RadioButtonTag, RadioButtonTagConfirmPhoto,
-  RadioButtonLabel, RadioButtonOuter, RadioButtonInner1,
-  RadioButtonInner2, RadioButtonInner3, RadioButtonInner4,
-  RadioButtonLabelText,
+  RadioButtonLabel, RadioButtonOuter, RadioButtonInner0,
+  RadioButtonInner1, RadioButtonInner2, RadioButtonInner3,
+  RadioButtonInner4, RadioButtonLabelText,
   SubTaskLabelText, SubTaskInput, SubTaskText,
   SubTaskWeigeText, SubTaskIcon, SubTaskButton,
   SubTaskView, SubTaskItemView, SubTaskButtonView,
@@ -464,10 +464,10 @@ export default function TaskCreatePage({ navigation }) {
                 <RadioButtonInner1 switch={confirmPhoto}/>
               </RadioButtonOuter>
             </RadioButtonTagConfirmPhoto>
-            <RadioButtonTagConfirmPhoto onPress={() => setConfirmPhoto(2)}>
+            <RadioButtonTagConfirmPhoto onPress={() => setConfirmPhoto(0)}>
               <RadioButtonLabel>Não é requisito</RadioButtonLabel>
               <RadioButtonOuter>
-                <RadioButtonInner2 switch={confirmPhoto}/>
+                <RadioButtonInner0 switch={confirmPhoto}/>
               </RadioButtonOuter>
             </RadioButtonTagConfirmPhoto>
           </RadioButtonView>

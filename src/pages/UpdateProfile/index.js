@@ -10,9 +10,15 @@ import {
   ButtonText,
   Container,
   Form, FormInput,
+  GenderDiv,
   ImageWrapper,
-  Options,
+  LabelText,
+  // Options,
   PhoneMask,
+  RadioButtonView, RadioButtonTag,
+  RadioButtonLabel, RadioButtonOuter,
+  RadioButtonInner1, RadioButtonInner2, RadioButtonInner3,
+  RadioButtonInner4,
   SignUpErrorText,
   SubmitButton,
   UserImage, UserImageBackgroundView,
@@ -33,7 +39,7 @@ export default function UpdateProfile({ navigation, route }) {
   const [oldPassword, setOldPassword] = useState();
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
-  const [phonenumber, setPhonenumber] = useState(user.phonenumber);
+  const phonenumber = user.phonenumber;
   const [email, setEmail] = useState(user.email);
   const [birthDate, setBirthDate] = useState(user.birth_date);
   const [gender, setGender] = useState(user.gender);
@@ -41,7 +47,7 @@ export default function UpdateProfile({ navigation, route }) {
   const [imagePath, setImagePath] = useState();
   const [previewImage, setPreviewImage] = useState();
 
-  const genderOptions = [ 'feminino', 'masculino', 'alien', 'outro', '']
+  // const genderOptions = [ 'feminino', 'masculino', 'alien', 'outro', '']
 
   async function handleUpdatePhoto() {
     await ImagePicker.openPicker({
@@ -175,20 +181,7 @@ export default function UpdateProfile({ navigation, route }) {
           />
           {/* <HrLine/> */}
           <AllIcon name='info'/>
-          {/* <PhoneMask
-            type={'cel-phone'}
-            options={{
-              maskType: 'BRL',
-              withDDD: true,
-              dddMask: '(99) ',
-            }}
-            placeholder="DDD + Número de whatsapp"
-            placeholderTextColor="#ccc"
-            returnKeyType="next"
-            value={phonenumber}
-            onChangeText={setPhonenumber}
-            // ref={phoneNumberRef}
-          /> */}
+
           <PhoneMask
             type={'datetime'}
             options={{
@@ -201,16 +194,8 @@ export default function UpdateProfile({ navigation, route }) {
             onChangeText={setBirthDate}
             // ref={birthDateRef}
           />
-          {/* <FormInput
-            autoCorrect={false}
-            autoCapitalize="none"
-            placeholder="gênero"
-            // onSubmitEditing={() => passwordRef.current.focus()}
-            value={gender}
-            onChangeText={setGender}
-            // ref={genderRef}
-          /> */}
-          <Options
+
+          {/* <Options
             selectedValue={gender}
             onValueChange={setGender}
             placeholder="Gênero"
@@ -218,7 +203,7 @@ export default function UpdateProfile({ navigation, route }) {
             { genderOptions.map(g => (
               <Options.Item key={g} label={g} value={g}/>
             ))}
-          </Options>
+          </Options> */}
           <FormInput
             keboardType="email-address"
             autoCorrect={false}
@@ -230,6 +215,35 @@ export default function UpdateProfile({ navigation, route }) {
             onChangeText={setEmail}
             // ref={emailRef}
           />
+          <GenderDiv>
+            <LabelText>Gênero</LabelText>
+            <RadioButtonView>
+              <RadioButtonTag onPress={() => setGender('feminino')}>
+                <RadioButtonLabel>feminino</RadioButtonLabel>
+                <RadioButtonOuter>
+                  <RadioButtonInner1 switch={gender}/>
+                </RadioButtonOuter>
+              </RadioButtonTag>
+              <RadioButtonTag onPress={() => setGender('masculino')}>
+                <RadioButtonLabel>masculino</RadioButtonLabel>
+                <RadioButtonOuter>
+                  <RadioButtonInner2 switch={gender}/>
+                </RadioButtonOuter>
+              </RadioButtonTag>
+              <RadioButtonTag onPress={() => setGender('alien')}>
+                <RadioButtonLabel>alien</RadioButtonLabel>
+                <RadioButtonOuter>
+                  <RadioButtonInner3 switch={gender}/>
+                </RadioButtonOuter>
+              </RadioButtonTag>
+              <RadioButtonTag onPress={() => setGender('outro')}>
+                <RadioButtonLabel>outro</RadioButtonLabel>
+                <RadioButtonOuter>
+                  <RadioButtonInner4 switch={gender}/>
+                </RadioButtonOuter>
+              </RadioButtonTag>
+            </RadioButtonView>
+          </GenderDiv>
           {/* <HrLine/> */}
           <AllIcon name='unlock'/>
           <FormInput

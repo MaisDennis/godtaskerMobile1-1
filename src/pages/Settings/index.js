@@ -9,6 +9,7 @@ import {
   NextIcon,
   SpaceView, SettingsMenuView, SettingsItemView,
   SettingsImageView, SettingsItemText, SettingsImage,
+  SettingsLink,
   SubHrView, SettignsLeftView, SettingsRightView,
   UserProfileView, UserImageBackgroundView, UserImage,
   UserInfoView, UserText, UserAboutText,
@@ -90,66 +91,46 @@ export default function SettingsPage({ navigation }) {
 
       <SettingsMenuView>
         <SettingsItemView>
-          <SettignsLeftView>
-            <AlignView>
-              <SettingsImageView>
-                <SettingsImage name="key" size={24}/>
-              </SettingsImageView>
-            </AlignView>
-            <SettingsItemText>Conta</SettingsItemText>
-          </SettignsLeftView>
-          <SettingsRightView>
-            <TouchableOpacity onPress={handleUpdateProfile}>
-              <NextIcon name="arrow-right" size={16}></NextIcon>
-            </TouchableOpacity>
-          </SettingsRightView>
+          <SettingsImageView>
+            <SettingsImage name="key" size={24}/>
+          </SettingsImageView>
+          <SettingsItemText>Conta</SettingsItemText>
+          <SettingsLink onPress={() => handleUpdateProfile()}>
+            <NextIcon name="arrow-right" size={16}></NextIcon>
+          </SettingsLink>
         </SettingsItemView>
         <SubHrView/>
 
         <SettingsItemView>
-          <SettignsLeftView>
-            <AlignView>
-              <SettingsImageView>
-                <SettingsImage name="info" size={24} style={{color: '#ddd'}}/>
-              </SettingsImageView>
-            </AlignView>
-            <SettingsItemText style={{color: '#ddd'}}>Ajuda</SettingsItemText>
-          </SettignsLeftView>
-          <SettingsRightView>
+          <SettingsImageView>
+            <SettingsImage name="info" size={24} style={{color: '#ddd'}}/>
+          </SettingsImageView>
+          <SettingsItemText style={{color: '#ddd'}}>Ajuda</SettingsItemText>
+            <SettingsLink>
+              <NextIcon name="arrow-right" size={16} style={{color: '#ddd'}}></NextIcon>
+            </SettingsLink>
+          </SettingsItemView>
+          <SubHrView/>
+
+        <SettingsItemView>
+          <SettingsImageView>
+            <SettingsImage name="heart" size={24} style={{color: '#ddd'}}/>
+          </SettingsImageView>
+          <SettingsItemText style={{color: '#ddd'}}>Compartilhar godtasker</SettingsItemText>
+          <SettingsLink>
             <NextIcon name="arrow-right" size={16} style={{color: '#ddd'}}></NextIcon>
-          </SettingsRightView>
+          </SettingsLink>
         </SettingsItemView>
         <SubHrView/>
 
         <SettingsItemView>
-          <SettignsLeftView>
-            <AlignView>
-              <SettingsImageView>
-                <SettingsImage name="heart" size={24} style={{color: '#ddd'}}/>
-              </SettingsImageView>
-            </AlignView>
-            <SettingsItemText style={{color: '#ddd'}}>Compartilhar godtasker</SettingsItemText>
-          </SettignsLeftView>
-          <SettingsRightView>
-            <NextIcon name="arrow-right" size={16} style={{color: '#ddd'}}></NextIcon>
-          </SettingsRightView>
-        </SettingsItemView>
-        <SubHrView/>
-
-        <SettingsItemView>
-          <SettignsLeftView>
-            <AlignView>
-              <SettingsImageView>
-                <SettingsImage name="log-out" size={24}/>
-              </SettingsImageView>
-            </AlignView>
-            <SettingsItemText>Sair</SettingsItemText>
-          </SettignsLeftView>
-          <SettingsRightView>
-            <TouchableOpacity onPress={handleSignOut}>
-              <NextIcon name="arrow-right" size={16}></NextIcon>
-            </TouchableOpacity>
-          </SettingsRightView>
+          <SettingsImageView>
+            <SettingsImage name="log-out" size={24}/>
+          </SettingsImageView>
+          <SettingsItemText>Sair</SettingsItemText>
+          <SettingsLink onPress={() => handleSignOut()}>
+            <NextIcon name="arrow-right" size={16}></NextIcon>
+          </SettingsLink>
         </SettingsItemView>
         <SubHrView/>
       </SettingsMenuView>

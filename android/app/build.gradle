@@ -133,16 +133,18 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    // -------------------------------------------------------------------------
     defaultConfig {
         applicationId "com.gerentedashmobile"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 94
+        versionCode 97
         versionName "2"
         missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
+    // -------------------------------------------------------------------------
     splits {
         abi {
             reset()

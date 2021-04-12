@@ -11,6 +11,10 @@ import {
   Input, ItemWrapperView,
   LabelText,
   Options,
+  RadioButtonView, RadioButtonTag, RadioButtonTagConfirmPhoto,
+  RadioButtonLabel, RadioButtonOuter, RadioButtonInner0,
+  RadioButtonInner1, RadioButtonInner2, RadioButtonInner3,
+  RadioButtonInner4, RadioButtonLabelText,
   SubTaskView, SubTaskItemView, SubTaskButtonView, SubTaskLabelText,
   SubTaskInput, SubTaskText, SubTaskWeigeText,
   SubTaskIcon, SubTaskButton,
@@ -279,29 +283,92 @@ export default function TaskEditPage({ navigation, route }) {
 
         <ItemWrapperView>
           <LabelText>Prioridades:</LabelText>
-          <Options selectedValue={prior} onValueChange={setPrior}>
-            { taskAttributesArray.map(t => (
-              <Options.Item key={t} label={t} value={t}/>
-            ))}
-          </Options>
+          <RadioButtonView>
+            <RadioButtonTag onPress={() => setPrior(1)}>
+              <RadioButtonLabel>baixa</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setPrior(2)}>
+              <RadioButtonLabel>média</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setPrior(3)}>
+              <RadioButtonLabel>alta</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner3 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setPrior(4)}>
+              <RadioButtonLabel>n/a</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner4 switch={prior}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>
           <LabelText>Urgência:</LabelText>
-          <Options selectedValue={urgent} onValueChange={setUrgent}>
-            { taskAttributesArray.map(t => (
-              <Options.Item key={t} label={t} value={t}/>
-            ))}
-          </Options>
+          <RadioButtonView>
+            <RadioButtonTag onPress={() => setUrgent(1)}>
+              <RadioButtonLabel>baixa</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setUrgent(2)}>
+              <RadioButtonLabel>média</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setUrgent(3)}>
+              <RadioButtonLabel>alta</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner3 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setUrgent(4)}>
+              <RadioButtonLabel>n/a</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner4 switch={urgent}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>
           <LabelText>Complexidade:</LabelText>
-          <Options selectedValue={complex} onValueChange={setComplex}>
-            { taskAttributesArray.map(t => (
-              <Options.Item key={t} label={t} value={t}/>
-            ))}
-          </Options>
+          <RadioButtonView>
+            <RadioButtonTag onPress={() => setComplex(1)}>
+              <RadioButtonLabel>baixa</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner1 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setComplex(2)}>
+              <RadioButtonLabel>média</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner2 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setComplex(3)}>
+              <RadioButtonLabel>alta</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner3 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+            <RadioButtonTag onPress={() => setComplex(4)}>
+              <RadioButtonLabel>n/a</RadioButtonLabel>
+              <RadioButtonOuter>
+                <RadioButtonInner4 switch={complex}/>
+              </RadioButtonOuter>
+            </RadioButtonTag>
+          </RadioButtonView>
         </ItemWrapperView>
 
         <ItemWrapperView>

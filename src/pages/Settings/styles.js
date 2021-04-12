@@ -35,7 +35,7 @@ export const HeaderImage = styled.Image`
 `;
 
 export const NextIcon = styled(Icon)`
-  padding: 100% 16px;
+  padding: 0 16px;
   color: #4433ee;
   /* background-color: #f00; */
 `;
@@ -52,19 +52,38 @@ export const SettingsImageView = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   height: 100%;
+  width: 20%;
   margin: 0;
   /* background-color: #f5f5; */
 `;
 export const SettingsImage = styled(Icon)`
 
 `;
-export const SettingsItemText = styled.Text``;
+
+export const SettingsLink = styled(TouchableOpacity)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 20%;
+  height: 100%;
+  /* background-color: #e55; */
+
+`;
+
+export const SettingsItemText = styled.Text`
+  width: 60%;
+
+  /* background-color: #ee3; */
+`;
 
 export const SettingsMenuView = styled.View`
 display: flex;
 flex-direction: column;
-height: 100%;
+height: auto;
+background-color: #fff;
 /* background-color: #4433ee; */
 `;
 export const SettingsItemView = styled.View`

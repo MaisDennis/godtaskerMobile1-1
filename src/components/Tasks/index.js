@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState, useMemo } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Alert, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { format, parseISO } from 'date-fns';
 import CheckBox from '@react-native-community/checkbox';
 import Modal from 'react-native-modal';
+import ImagePicker from 'react-native-image-crop-picker';
 import firestore from '@react-native-firebase/firestore';
 import pt from 'date-fns/locale/pt';
 import Icon from 'react-native-vector-icons/Feather';
@@ -49,6 +50,7 @@ const formattedDateTime = fdate =>
 
 export default function Task({ data, navigation, taskConditionIndex }) {
   const dispatch = useDispatch();
+  const task_id = data.id;
   const userData = data.user
   const dueDate = parseISO(data.due_date);
   const endDate = parseISO(data.end_date);
@@ -56,6 +58,7 @@ export default function Task({ data, navigation, taskConditionIndex }) {
 
   const [toggleTask, setToggleTask] = useState();
   const [toggleModal, setToggleModal] = useState(false);
+  const [togglePhotoModal, setTogglePhotoModal] = useState();
   const [toggleConfirmModal, setToggleConfirmModal] = useState(false);
   const [rejectTaskInputValue, setRejectTaskInputValue] = useState();
   const [updateStatus, setUpdateStatus] = useState();
@@ -166,9 +169,10 @@ export default function Task({ data, navigation, taskConditionIndex }) {
 
   function handleConfirm() {
     if(data.confirm_photo) {
-      navigation.navigate('Confirm', {
-        task_id: data.id, taskName: data.name
-      });
+      // navigation.navigate('Confirm', {
+      //   task_id: data.id, taskName: data.name
+      // });
+      setTogglePhotoModal(!togglePhotoModal)
     } else {
       setToggleConfirmModal(!toggleConfirmModal)
     }
@@ -218,6 +222,119 @@ export default function Task({ data, navigation, taskConditionIndex }) {
       return
     }
   }
+
+  async function takePhotoFromCamera() {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(async image => {
+      console.log(image)
+      const formData = new FormData();
+      formData.append('signatureImage', {
+        uri: Platform.OS === 'ios' ? image.sourceURL : image.path,
+        // uri: image.path,
+        // type: "image/jpg",
+        type: "image/jpg",
+        name: `signature_${task_id}.jpg`,
+      });
+
+      try {
+        const response = await api.post('signatures', formData);
+
+        const { signature_id } = response.data;
+
+        await api.put(`tasks/confirm/${task_id}`, {
+          signature_id,
+        });
+
+        Alert.alert(
+          'Confirmação',
+          'Enviada com sucesso!',
+          [
+            {
+              text: 'OK',
+              onPress: () => console.log('OKBJ')
+            }
+          ],
+          {cancelable: false }
+        )
+        setTogglePhotoModal(!togglePhotoModal)
+      }
+      catch {
+        Alert.alert(
+          'Confirmação',
+          'Não foi possível enviar a confirmação.',
+          [
+            {
+              text: 'OK',
+              onPress: () => console.log('OKBJ')
+            }
+          ],
+          {cancelable: false }
+        )
+        setTogglePhotoModal(!togglePhotoModal)
+      }
+    })
+  }
+
+  async function chooseFromLibrary() {
+    // console.warn('choose Photo')
+      ImagePicker.openPicker({
+        width: 300,
+        height: 400,
+        cropping: true
+      }).then(async image => {
+        console.log(image.path)
+        const formData = new FormData();
+        formData.append('signatureImage', {
+          // uri: Platform.OS === 'ios' ? image.sourceURL : image.path,
+          uri: image.path,
+          type: Platform.OS === 'ios' ? "image/*" : "image/jpg",
+          // type: "image/jpg",
+          // type: "image/*",
+          name: `signature_${task_id}.jpg`,
+        });
+
+        try {
+          const response = await api.post('signatures', formData);
+
+          const { signature_id } = response.data;
+
+          await api.put(`tasks/confirm/${task_id}`, {
+            signature_id,
+          });
+
+          Alert.alert(
+            'Confirmação',
+            'Enviada com sucesso!',
+            [
+              {
+                text: 'OK',
+                onPress: () => console.log('OKBJ')
+              }
+            ],
+            {cancelable: false }
+          )
+          setTogglePhotoModal(!togglePhotoModal)
+        }
+        catch {
+          Alert.alert(
+            'Confirmação',
+            'Não foi possível enviar a confirmação.',
+            [
+              {
+                text: 'OK',
+                onPress: () => console.log('OKBJ')
+              }
+            ],
+            {cancelable: false }
+          )
+          setTogglePhotoModal(!togglePhotoModal)
+        }
+      });
+
+    }
   // -----------------------------------------------------------------------------
   return (
     <Container taskConditionIndex={taskConditionIndex}>
@@ -535,6 +652,29 @@ export default function Task({ data, navigation, taskConditionIndex }) {
                 </ButtonView>
               </DatesAndButtonView>
             </ModalView>
+          </Modal>
+
+          <Modal isVisible={togglePhotoModal}>
+          <ModalView>
+          <ModalText>Qual a forma de escolher a foto?</ModalText>
+          <DatesAndButtonView>
+                <ButtonView onPress={() => chooseFromLibrary()}>
+                  <AcceptButton>
+                    <ButtonText>Foto do álbum</ButtonText>
+                  </AcceptButton>
+                </ButtonView>
+                <ButtonView onPress={() => takePhotoFromCamera()}>
+                  <AcceptButton>
+                    <ButtonText>Câmera</ButtonText>
+                  </AcceptButton>
+                </ButtonView>
+                <ButtonView onPress={() => setTogglePhotoModal(!togglePhotoModal)}>
+                  <RejectButton>
+                    <ButtonText>Voltar</ButtonText>
+                  </RejectButton>
+                </ButtonView>
+              </DatesAndButtonView>
+          </ModalView>
           </Modal>
         </>
       )}

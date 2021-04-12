@@ -11,9 +11,15 @@ import {
   ButtonText,
   Container,
   Form, FormInput,
+  GenderDiv,
+  LabelText,
   // ImageGodtaskerFont, ImageLogo,
   Options,
   PhoneMask,
+  RadioButtonView, RadioButtonTag, RadioButtonTagConfirmPhoto,
+  RadioButtonLabel, RadioButtonOuter, RadioButtonInner0,
+  RadioButtonInner1, RadioButtonInner2, RadioButtonInner3,
+  RadioButtonInner4, RadioButtonLabelText,
   SignUpErrorText,
   SubmitButton,
   Wrapper,
@@ -122,15 +128,35 @@ export default function SignUp({ navigation, route }) {
               value={birthDate}
               onChangeText={setBirthDate}
             />
-            <Options
-              selectedValue={gender}
-              onValueChange={setGender}
-              placeholder="Gênero"
-            >
-              { genderOptions.map(g => (
-                <Options.Item key={g} label={g} value={g}/>
-              ))}
-            </Options>
+            <GenderDiv>
+              <LabelText>Gênero</LabelText>
+              <RadioButtonView>
+                <RadioButtonTag onPress={() => setGender('feminino')}>
+                  <RadioButtonLabel>feminino</RadioButtonLabel>
+                  <RadioButtonOuter>
+                    <RadioButtonInner1 switch={gender}/>
+                  </RadioButtonOuter>
+                </RadioButtonTag>
+                <RadioButtonTag onPress={() => setGender('masculino')}>
+                  <RadioButtonLabel>masculino</RadioButtonLabel>
+                  <RadioButtonOuter>
+                    <RadioButtonInner2 switch={gender}/>
+                  </RadioButtonOuter>
+                </RadioButtonTag>
+                <RadioButtonTag onPress={() => setGender('alien')}>
+                  <RadioButtonLabel>alien</RadioButtonLabel>
+                  <RadioButtonOuter>
+                    <RadioButtonInner3 switch={gender}/>
+                  </RadioButtonOuter>
+                </RadioButtonTag>
+                <RadioButtonTag onPress={() => setGender('outro')}>
+                  <RadioButtonLabel>outro</RadioButtonLabel>
+                  <RadioButtonOuter>
+                    <RadioButtonInner4 switch={gender}/>
+                  </RadioButtonOuter>
+                </RadioButtonTag>
+              </RadioButtonView>
+            </GenderDiv>
             <FormInput
               keboardType="email-address"
               autoCorrect={false}

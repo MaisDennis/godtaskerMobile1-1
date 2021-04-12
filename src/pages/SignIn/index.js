@@ -82,6 +82,7 @@ export default function SignIn({ navigation }) {
                 // icon="unlock"
                 secureTextEntry={true}
                 placeholder="Sua senha"
+                placeholderTextColor={'#999'}
                 returnKeyType="send"
                 onSubmitEditing={handleSubmit}
                 value={password}

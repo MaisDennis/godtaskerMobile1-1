@@ -291,12 +291,15 @@ export const SenderAboutText = styled.Text`
 
 export const SendInput = styled.TextInput`
   display: flex;
+  flex-direction: row;
+  align-items: center;
   height: 32px;
   width: 80%;
   margin: 0;
-  padding: 0 12px;
+  padding: 6px 12px;
   border-radius: 16px;
-  border: 1px solid #ccc;
+  border-width: 1px;
+  border-color: #ccc;
   background-color: #fff;
 `;
 
